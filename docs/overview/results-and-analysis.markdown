@@ -125,6 +125,12 @@ A python macro file is provided to modify ROOT output in SDD [2] file format:
                  source /path/to/root/bin/thisroot.(c)sh,
                  do "pip install pyroot" and try again.
 
+## Note about python import in ROOT
+
+If python cannot import ROOT, please configure your ROOT version to include PyROOT. 
+
+For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, see [link]({{"https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html#python-interface" | relative_url }}){:target="_blank"}.
+
 ## References
 
 [1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - [link]({{"https://doi.org/10.1080/095530097143798" | relative_url }}){:target="_blank"}
