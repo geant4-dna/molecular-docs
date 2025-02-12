@@ -106,12 +106,15 @@ In multithreading mode, ROOT data files (molecular-dna_t*.root) associated with 
 
 Several ROOT macro files are provided to join the ROOT data files into an unique ROOT data file (molecular-dna.root) and analyse the results:
 - cylinders.C : to plot damage from cylinders geometry
+- plasmid.C : to plot damage from plasmid geometry
 - ecoli.C : to plot damage from E.coli geometry
-- human_cell.C and human_cell_alphas.C: to plot damage and fragments distribution from human cell geometries (as in [3] for human_cell_alphas.C)
+- human_cell.C, human_cell_alphas.C and human_cell_chromosomes.C: to plot damage and fragments distribution from human cell geometries (as in [3] for human_cell_alphas.C, as in [4] for human_cell_chromosomes.C)
 
 ```
 root cylinders.C
 ```
+
+These macros calculate mean quantities and the associated standard error of the mean (SEM) [5].
 
 User can also join the ROOT files (molecular-dna_t*.root) using the following command :
 
@@ -138,3 +141,7 @@ For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, 
 [2] A new standard DNA damage (SDD) data format, J. Schuemann et al., Rad. Res. 191 (2019) 76-92 - [link]({{"https://doi.org/10.1667/rr15209.1" | relative_url }}){:target="_blank"}  
 
 [3] Geant4-DNA simulation of human cancer cells irradiation with helium ion beams, K. Chatzipapas et al., Phys. Med. 112 (2023) 102613 - [link]({{ "https://doi.org/10.1016/j.ejmp.2023.102613" | relative_url }}){:target="_blank"}
+
+[4] Development of a novel computational technique to create DNA and cell geometrical models for Geant4-DNA, K. Chatzipapas et al., Phys. Med. 127 (2024) 104389 - [link]({{ "https://doi.org/10.1016/j.ejmp.2024.104839" | relative_url }}){:target="_blank"}
+
+[5] What to use to express the variability of data: Standard deviation or standard error of mean?, Mohini P. Barde, Prajakt J. Barde, Perspectives in Clinical Research 3(3) (2012) 113-116 - [link]({{ "https://doi.org/10.1016/j.ejmp.2024.104839" | relative_url }}){:target="_blank"}
