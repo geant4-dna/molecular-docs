@@ -144,4 +144,4 @@ For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, 
 
 [4] Development of a novel computational technique to create DNA and cell geometrical models for Geant4-DNA, K. Chatzipapas et al., Phys. Med. 127 (2024) 104389 - [link]({{ "https://doi.org/10.1016/j.ejmp.2024.104839" | relative_url }}){:target="_blank"}
 
-[5] What to use to express the variability of data: Standard deviation or standard error of mean?, Mohini P. Barde, Prajakt J. Barde, Perspectives in Clinical Research 3(3) (2012) 113-116 - [link]({{ "https://doi.org/10.1016/j.ejmp.2024.104839" | relative_url }}){:target="_blank"}
+[5] What to use to express the variability of data: Standard deviation or standard error of mean?, Mohini P. Barde, Prajakt J. Barde, Perspectives in Clinical Research 3(3) (2012) 113-116 - [link]({{ "https://doi.org/10.4103/2229-3485.100662" | relative_url }}){:target="_blank"}
