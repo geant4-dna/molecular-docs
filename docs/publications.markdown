@@ -27,7 +27,7 @@ This version of molecularDNA is based on the following previous works and is cur
 
 - Evaluation of early radiation DNA damage in a fractal cell nucleus model using Geant4-DNA, D. Sakata et al., Phys. Med. 62 (2019) 152-157 - [link]({{ "https://doi.org/10.1016/j.ejmp.2019.04.010" | relative_url }}){:target="_blank"}
 
-- Mechanistic DNA Damage Simulations in Geant4-DNA Part 2: Electron and Proton Damage in a Bacterial Cell, N. Lampe et al., Phys. Med. 48 (2018) 146-155 - [link]({{ "https://doi.org/10.1016/j.ejmp.2017.12.008" | relative_url }}){:target="_blank"}. Note that a bug was recently identified in the implementation of the bacterium geometry, a preliminary [erratum]({{"docs/notes-and-errata/correction-to-lampe-2018" | absolute_url}}) is available here.
+- Mechanistic DNA Damage Simulations in Geant4-DNA Part 2: Electron and Proton Damage in a Bacterial Cell, N. Lampe et al., Phys. Med. 48 (2018) 146-155 - [link]({{ "https://doi.org/10.1016/j.ejmp.2017.12.008" | relative_url }}){:target="_blank"} - [corrigendum]({{ "https://doi.org/10.1016/j.ejmp.2025.104913" | relative_url }}){:target="_blank"}
 
 - Mechanistic DNA Damage Simulations in Geant4-DNA Part 1: A parameter study in a simplified geometry, N. Lampe et al., Phys. Med. 48 (2018) 135-145 - [link]({{ "https://doi.org/10.1016/j.ejmp.2018.02.011" | relative_url }}){:target="_blank"}
 
