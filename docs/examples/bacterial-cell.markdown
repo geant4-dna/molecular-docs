@@ -103,5 +103,5 @@ for example: EaqStrandHits is e_aq + DNA backbone
 
 ## Important notes
 
-- The physics and chemistry models used since the 2018 [publication]({{"https://doi.org/10.1016/j.ejmp.2017.12.008"| relative_url}}){:target="_blank"} of this model have evolved significantly, making comparison to past works difficult.
+- The physics and chemistry models used since the 2018 [publication]({{"https://doi.org/10.1016/j.ejmp.2017.12.008"| relative_url}}){:target="_blank"} of this model have evolved significantly, making comparison to past works difficult. Optimization of simulation parameters is thus required.
 - Further, an issue was identified in the geometry implementation of the 2018 work that is addressed in this [corrigendum]({{ "https://doi.org/10.1016/j.ejmp.2025.104913" | relative_url }}){:target="_blank"}.
