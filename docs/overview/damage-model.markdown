@@ -111,9 +111,9 @@ distance $$\bar{x}$$ in time $$t$$ as follows:
 $$\bar{x} = \sqrt{6D_ct} $$
 
 For the $$\ce{^{\bullet}OH}$$ radical ($$D_c=2.8\times 10^{-9}m^2s^{-1}$$), this
-gives $$\bar{x} = 4.09 \sqrt{t} \ \mathrm{nm} $$. Typically for simulations in molecularDNA,
+gives $$\bar{x} = 4.09 \sqrt{t} \ \mathrm{nm} $$. Typically for simulations of cells in molecularDNA,
 this means that a radical kill distance of 4nm-6nm yields reliable results, while larger radical kill
 distances would require scavenging to be more broadly implemented.
 
 ## References
-[1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - [link]({{"https://doi.org/10.1080/095530097143798" | relative_url }}){:target="_blank"} 
+[1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - [link]({{"https://doi.org/10.1080/095530097143798" | relative_url }}){:target="_blank"}
