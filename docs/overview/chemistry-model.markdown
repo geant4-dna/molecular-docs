@@ -33,11 +33,13 @@ The IRT method is based on the “Independent Pair Approximation”; thus, react
 
 While this is a considerable advantage in terms of computing time, the spatial–temporal information of the system is not simulated explicitly. As a complementary extension, synchronous IRT (or IRT-syn) implementation calculates a time step using IRT method for the next reaction that should occur. The reactive products created in this reaction and the remaining molecules are considered explicitly together to diffuse for the time step. Then, based on their new positions, the new random reaction times are re-evaluated sequentially for all the radicals in the system and the new minimum reaction time and corresponding reaction is selected for next time step. This procedure is repeated until the end time of simulation.
 
+By default, a maximum time step of 500 ps is applied to all chemistry simulations [4]. This means that the chemical reactions expected to occur beyond 500 ps are ignored, all remainig molecules unbdergo a 500 ps diffusion, and the table of reactions is fully recalculated.
+
 ## Reaction rates between free radicals and DNA
 Indirect damage occurs from the chemical reaction between a radical and a DNA molecule (see the table below). To induce indirect strand breaks, the chemical reaction occurs between the •OH radical and the 2-deoxyribose-phosphate group. The probabilities to induce a single strand break are described in the
 [Indirect Damage]( {{ "docs/overview/damage-model" | relative_url }} ) through `DamageModel` class.
 
-| Reaction                                  | Reaction rate (109 M-1s-1)[4] |
+| Reaction                                  | Reaction rate (109 M-1s-1)[5] |
 |:------------------------------------------|:------------------------------|
 | 2-deoxyribose + •OH                       | 1.8                           |
 | Adenine + •OH                             | 6.1                           |
@@ -79,4 +81,6 @@ To print reactions
 
 [3] Review of chemical models and applications in Geant4-DNA: Report from the ESA BioRad III Project, H. N. Tran et al., Med. Phys. (2024) in press - [link]({{"https://doi.org/10.1002/mp.17256" | relative_url }}){:target="_blank"}
 
-[4] Critical review of rate constants for reactions of hydrated electrons, hydrogen atoms and hydroxyl radicals (·OH/·O-) − in aqueous solution, G. V. Buxton et al., J. Phys. Chem. Ref. Data. 17 (1988) 513–886 - [link]({{"https://doi.org/10.1063/1.555805" | relative_url }}){:target="_blank"}
+[4] Mechanistic DNA Damage Simulations in Geant4-DNA Part 1: A parameter study in a simplified geometry, N. Lampe et al., Phys. Med. 48 (2018) 135-145 - [link]({{ "https://doi.org/10.1016/j.ejmp.2018.02.011" | relative_url }}){:target="_blank"}
+
+[5] Critical review of rate constants for reactions of hydrated electrons, hydrogen atoms and hydroxyl radicals (·OH/·O-) − in aqueous solution, G. V. Buxton et al., J. Phys. Chem. Ref. Data. 17 (1988) 513–886 - [link]({{"https://doi.org/10.1063/1.555805" | relative_url }}){:target="_blank"}
