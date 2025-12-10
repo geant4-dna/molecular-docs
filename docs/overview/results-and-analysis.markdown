@@ -100,12 +100,13 @@ At the completion of the run, the following outputs in a ROOT file are saved:
   26. Name
 
 
-## Analysis files
+## ROOT Analysis files
 
 In multithreading mode, ROOT data files (molecular-dna_t*.root) associated with the threads are created. [ROOT6.x]( {{ "https://root.cern/install/" | relative_url }} ){:target="_blank"} should be installed to analyse these ROOT data files.
 
 Several ROOT macro files are provided to join the ROOT data files into an unique ROOT data file (molecular-dna.root) and analyse the results:
 - cylinders.C : to plot damage from cylinders geometry
+- phage.C : to plot damage from phage geometry
 - plasmid.C : to plot damage from plasmid geometry
 - ecoli.C : to plot damage from E.coli geometry
 - human_cell.C, human_cell_alphas.C and human_cell_chromosomes.C: to plot damage and fragments distribution from human cell geometries (as in [3] for human_cell_alphas.C, as in [4] for human_cell_chromosomes.C)
@@ -133,6 +134,23 @@ A python macro file is provided to modify ROOT output in SDD [2] file format:
 If python cannot import ROOT, please configure your ROOT version to include PyROOT. 
 
 For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, see [link]({{"https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html#python-interface" | relative_url }}){:target="_blank"}.
+
+
+## Text analysis files
+
+Individual damage files can ge generated to diplay graphically hits on strands, using the command:
+```
+analysisDNA/saveStrands
+```
+
+They use the following naming scheme:
+"D" for a direct damage
+"I" for an indirect damage
+"~" if hit without damage
+"-" if not hit
+"X" for bith damage types
+
+The numbers 6 and 7 represent damage source and damage complexity, respectively.
 
 ## References
 

@@ -37,6 +37,7 @@ Find more on the [Geant4-DNA project]({{ "http://geant4-dna.in2p3.fr/styled-2/in
 
 # Authors (in alphabetical order)
 
+- M. Batmunkh
 - J.M.C. Brown
 - K. Chatzipapas
 - P. Dondero
