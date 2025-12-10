@@ -25,7 +25,7 @@ Plasmid geometry is implemented in the provided macro file **plasmid.mac**. The 
 *prisms_plasmids_positions_500ngpul.txt* contains all plasmid positions in the
 irradiated volume.
 
-Radical kill distance and direct interaction range are set to 9 nm and 7 angstrom,
+Radical kill distance and direct interaction range are set to 9 nm and 5.5 angstrom,
 respectively.
 
 ```
@@ -60,7 +60,7 @@ The chromosome as region of interest for damage analysis is defined using:
 *Examples of plasmid geometries, from ref. [1]*
 
 ## Particle source
-A proton plane square source of protons is used, shooting a parallel beam.
+A plane square source of protons is used, shooting a parallel beam.
 
 ```
 # Source geometry
