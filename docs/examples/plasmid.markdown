@@ -29,15 +29,24 @@ Radical kill distance and direct interaction range are set to 9 nm and 7 angstro
 respectively.
 
 ```
+# Geometry: size of World volume
 /world/worldSize 4.84 um
 
+# Geometry: creation
+#  - Side length for each placement
 /dnageom/placementSize 200 200 200 nm
+#  - Scaling of XYZ in fractal definition file
 /dnageom/fractalScaling 1 1 1 nm
+#  - Path to file that defines placement locations
 /dnageom/definitionFile geometries/prisms_plasmids_positions_500ngpul.txt
+#  - Set placement volumes
 /dnageom/placementVolume prism geometries/plasmid_4367.txt
 
+# Geometry: distance from base pairs at which radicals are killed
 /dnageom/radicalKillDistance 9 nm
-/dnageom/interactionDirectRange 7 angstrom
+
+# Geometry: deposited energy accumulation range limit to start recording SBs from direct effects
+/dnageom/interactionDirectRange 5.5 angstrom
 ```
 
 The chromosome as region of interest for damage analysis is defined using:
@@ -54,14 +63,19 @@ The chromosome as region of interest for damage analysis is defined using:
 A proton plane square source of protons is used, shooting a parallel beam.
 
 ```
+# Source geometry
 /gps/pos/type Plane
 /gps/pos/shape Square
 /gps/pos/centre 0 0 -2.42 um
 /gps/pos/halfx 2.21 um
 /gps/pos/halfy 2.21 um
+
+# Source particle, energy and angular distribution
 /gps/particle proton
 /gps/energy 3 MeV
 /gps/direction 0 0 1
+
+# Beam on
 /run/beamOn 10
 ```
 
@@ -79,11 +93,11 @@ A probability of 65% is set for the indirect induction of strand break.
 
 /dnadamage/indirectHBaseChance 1.0
 /dnadamage/indirectHStrandChance 0.65
-/dnadamage/inductionHChance 0.00
+/dnadamage/inductionHChance 0.0
 
 /dnadamage/indirectEaqBaseChance 1.0
 /dnadamage/indirectEaqStrandChance 0.65
-/dnadamage/inductionEaqChance 0.00
+/dnadamage/inductionEaqChance 0.0
 ```
 
 ## Results

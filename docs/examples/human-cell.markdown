@@ -19,16 +19,34 @@ DNA damage induced by irradiation in a simplified human fibroblast cell can be s
 ## Geometry
 The default geometry (macro **human_cell.mac**) consists of a continuous chain defined by taking a basic Hilbert curve. This fractal is broken into cubic regions of straight and turned chromatin sections [DNA placement]({{"/docs/geometry-library/dna-placements" | relative_url}}). This chain is included in an ellipsoid with semi-dimensions 7.1 μm x 2.5  μm x 7.1 μm, which imitates a cell nucleus. Only cubes that are completely included in the ellipsoid are considered as parts of the chain, which length is 6.4 Gbp. Bp density of the produced cell corresponds to ~0.015 bp/nm3.
 ```
+# Geometry: size of World volume
 /world/worldSize 50 um
+
+# Geometry: shape of the cell
 /cell/radiusSize 14 2.5 14 um
+
+# Chemistry: end time of chemistry stage
 /scheduler/endTime 5.0 ns
+
+# Chemistry: set maximum allowed zero time steps
 /scheduler/maxNullTimeSteps 10000000
+
+# Geometry: distance from base pairs at which radicals are killed
 /dnageom/radicalKillDistance 9 nm
+
+# Geometry: deposited energy accumulation range limit to start recording SBs from direct effects
 /dnageom/interactionDirectRange 2.0 angstrom
 
+# Geometry: creation
+#  - Side length for each placement
 /dnageom/placementSize 75 75 75 nm
+#  - Scaling of XYZ in fractal definition file
 /dnageom/fractalScaling 75 75 75 nm
+
+#  - Path to file that defines placement locations
 /dnageom/definitionFile geometries/cube-centred-X-8.txt
+
+#  - Set placement volumes
 /dnageom/placementVolume turn geometries/turned_solenoid_750_withHistone.txt
 /dnageom/placementVolume turntwist geometries/turned_twisted_solenoid_750_withHistone.txt true
 /dnageom/placementVolume straight geometries/straight_solenoid_750_withHistone.txt
@@ -48,6 +66,7 @@ The chromosome as region of interest for damage analysis is defined using:
 ## Particle source
 A proton source plane with circle radius 7.1 um is located 3 μm from the cell center.
 ```
+# Source geometry
 /gps/pos/type Plane
 /gps/pos/shape Circle
 /gps/pos/centre 0 3000 0 nm
@@ -55,9 +74,14 @@ A proton source plane with circle radius 7.1 um is located 3 μm from the cell c
 /gps/pos/rot2 1 0 0
 /gps/pos/radius 7100 nm
 /gps/direction 0 -1 0
-/gps/particle  proton
-/analysisDNA/fileName 400keV
+
+# Source particle
+/gps/particle proton
+
+# Source energy
 /gps/energy 0.4 MeV
+
+# Beam on
 /run/beamOn 215
 ```
 ## Damage model

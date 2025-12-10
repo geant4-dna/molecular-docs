@@ -26,23 +26,35 @@ The genome has been produced using four side-by-side Hilbert curve fractals (see
 
 
 ```
+# Geometry: size of World volume
 /world/worldSize 8 um
 
+# Chemistry: end time of chemistry stage
 /scheduler/endTime 1 us
 
+# Geometry: optimisation of voxelisation
 /dnageom/setSmartVoxels 1
 
+# Geometry: distance from base pairs at which radicals are killed
 /dnageom/radicalKillDistance 4 nm
+
+# Geometry: deposited energy accumulation range limit to start recording SBs from direct effects
 /dnageom/interactionDirectRange 6 angstrom
 
+# Geometry: creation
+#  - Side length for each placement
 /dnageom/placementSize 50 50 50 nm
+#  - Scaling of XYZ in fractal definition file
 /dnageom/fractalScaling 50 50 50 nm
 
+#  - Path to file that defines placement locations
 /dnageom/definitionFile geometries/bacteria-XFXFXFX-4.txt
+#  - Set placement volumes
 /dnageom/placementVolume turn geometries/8strands_50nm_turn.txt
 /dnageom/placementVolume turntwist geometries/8strands_50nm_turn.txt true
 /dnageom/placementVolume straight geometries/8strands_50nm_straight.txt
 
+# Analysis: add ellipsoid chromosomal region of interest, with the name "bacteria"
 /chromosome/add bacteria ellipse 900 400 400 0 0 0 nm 0 0 0
 ```
 
@@ -52,6 +64,7 @@ The genome has been produced using four side-by-side Hilbert curve fractals (see
 ## Particle source
 Electrons are simulated coming from an ellipse enclosing the bacterial cell (of the same dimensions as the cell) with energy 9.999 keV. The angular distribution of electron trajectories coming from the cell surface follows a cosine law, which simulates an isotropic radiation environment.
 ```
+# Source geometry
 /gps/pos/type Surface
 /gps/pos/shape Ellipsoid
 /gps/pos/centre 0 0 0 nm
@@ -59,8 +72,12 @@ Electrons are simulated coming from an ellipse enclosing the bacterial cell (of 
 /gps/pos/halfy 400 nm
 /gps/pos/halfz 400 nm
 /gps/ang/type cos
+
+# Source particle and energy
 /gps/particle e-
 /gps/energy 9.999 keV
+
+# Beam on
 /run/beamOn 50000
 ```
 ## Damage model
@@ -71,7 +88,7 @@ Direct damage model uses the 17.5 eV for lower and upper break threshold. The pr
 
 /dnadamage/indirectOHBaseChance 1.0
 /dnadamage/indirectOHStrandChance 0.4
-/dnadamage/inductionOHChance 0.
+/dnadamage/inductionOHChance 0.0
 
 /dnadamage/indirectHBaseChance 1.0
 /dnadamage/indirectHStrandChance 0.4
