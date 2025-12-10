@@ -102,26 +102,21 @@ At the completion of the run, the following outputs in a ROOT file are saved:
 
 ## ROOT Analysis files
 
-In multithreading mode, ROOT data files (molecular-dna_t*.root) associated with the threads are created. [ROOT6.x]( {{ "https://root.cern/install/" | relative_url }} ){:target="_blank"} should be installed to analyse these ROOT data files.
+An output ROOT data file (molecular-dna.root) is created by the simulation. [ROOT6.x]( {{ "https://root.cern/install/" | relative_url }} ){:target="_blank"} should be installed.
 
-Several ROOT macro files are provided to join the ROOT data files into an unique ROOT data file (molecular-dna.root) and analyse the results:
+Several ROOT macro files are provided to analyse the corresponding results:
 - cylinders.C : to plot damage from cylinders geometry
 - phage.C : to plot damage from phage geometry
 - plasmid.C : to plot damage from plasmid geometry
 - ecoli.C : to plot damage from E.coli geometry
 - human_cell.C, human_cell_alphas.C and human_cell_chromosomes.C: to plot damage and fragments distribution from human cell geometries (as in [3] for human_cell_alphas.C, as in [4] for human_cell_chromosomes.C)
 
+Simply do:
 ```
 root cylinders.C
 ```
 
 These macros calculate mean quantities and the associated standard error of the mean (SEM) [5].
-
-User can also join the ROOT files (molecular-dna_t*.root) using the following command :
-
-```
-hadd -O -f molecular-dna.root molecular-dna_t*.root
-```
 
 A python macro file is provided to modify ROOT output in SDD [2] file format:
 - createSDD.py : to use it, insert the command "python3 createSDD.py".
@@ -143,12 +138,12 @@ Individual damage files can ge generated to display graphically hits on strands,
 analysisDNA/saveStrands
 ```
 
-They use the following naming scheme: \n
-"D" for a direct damage \n
-"I" for an indirect damage \n
-"~" if hit without damage \n
-"-" if not hit \n
-"X" for bith damage types \n
+They use the following naming scheme:
+- "D" for a direct damage
+- "I" for an indirect damage
+- "~" if hit without damage
+- "-" if not hit
+- "X" for bith damage types
 
 The numbers 6 and 7 represent damage source and damage complexity, respectively.
 
