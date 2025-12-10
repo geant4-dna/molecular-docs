@@ -53,10 +53,10 @@ The chromosome as region of interest for damage analysis is defined using:
 /chromosome/add phage cyl 3500 7000 0 0 0 nm 0 0 0
 ```
 
-![phage]({{"/assets/images/plasmids2.png" | relative_url}})
+![phage]({{"/assets/images/phage.jpg" | relative_url}})
 {: .text-left}
 
-*Examples of phage geometries, from ref. [1]*
+*Example of phage geometry visualization.*
 
 ## Particle source
 A proton plane circular source is used, shooting a parallel beam.
@@ -102,11 +102,6 @@ The following settings are used:
 ## Results
 Output (see [analysis]({{"docs/overview/results-and-analysis"| relative_url}}))
 is analysed by using the **phage.C** ROOT macro file.
-
-![phage]({{"/assets/images/phage.jpg" | relative_url}})
-{: .text-left}
-
-*Example of phage visualization.*
 
 
 ## Reference
