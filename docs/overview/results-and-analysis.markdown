@@ -138,17 +138,17 @@ For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, 
 
 ## Text analysis files
 
-Individual damage files can ge generated to diplay graphically hits on strands, using the command:
+Individual damage files can ge generated to display graphically hits on strands, using the command:
 ```
 analysisDNA/saveStrands
 ```
 
-They use the following naming scheme:
-"D" for a direct damage
-"I" for an indirect damage
-"~" if hit without damage
-"-" if not hit
-"X" for bith damage types
+They use the following naming scheme: \n
+"D" for a direct damage \n
+"I" for an indirect damage \n
+"~" if hit without damage \n
+"-" if not hit \n
+"X" for bith damage types \n
 
 The numbers 6 and 7 represent damage source and damage complexity, respectively.
 

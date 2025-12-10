@@ -22,7 +22,7 @@ placed in a cylinder with radius 3.5 um and height 7 um.
 Phage geometry is implemented in the provided macro file **phage.mac**. The file
 *phage.txt* describes the atom positions in the geometry.
 
-Radical kill distance and direct interaction range are set to 9 nm and 4 angstrom,
+Radical kill distance and direct interaction range are set to 4 nm and 4 angstrom,
 respectively.
 
 ```
