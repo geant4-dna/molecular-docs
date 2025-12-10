@@ -103,10 +103,10 @@ The following settings are used:
 Output (see [analysis]({{"docs/overview/results-and-analysis"| relative_url}}))
 is analysed by using the **phage.C** ROOT macro file.
 
-![phage]({{"/assets/images/plasmids.png" | relative_url}})
+![phage]({{"/assets/images/phage.jpg" | relative_url}})
 {: .text-left}
 
-*Example of phage.C output.*
+*Example of phage visualization.*
 
 
 ## Reference
