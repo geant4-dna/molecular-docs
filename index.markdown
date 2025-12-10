@@ -37,4 +37,4 @@ A **tutorial** demonstrating molecularDNA is also available at this [link]({{ "h
 Want to know more about how it all works? You'll want to visit our [Overview]( {{ "docs/overview" | relative_url }} ) page.
 
 --
-Updated on Dec. 6, 2024
+Updated on Dec. 10, 2025
