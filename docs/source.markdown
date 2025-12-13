@@ -28,7 +28,7 @@ To run the example:
 
 -t : number of threads to run
 
--p : physics constructor option (see [physics model]({{ "/docs/overview/physics-model" | relative_url }}))
+-p : physics constructor option (2, 4 or 6, see [physics model]({{ "/docs/overview/physics-model" | relative_url }}))
 
 -v : set to 1 only to activate visualization (0 is the default value)
 

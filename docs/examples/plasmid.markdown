@@ -76,7 +76,7 @@ A plane square source of protons is used, shooting a parallel beam.
 /gps/direction 0 0 1
 
 # Beam on
-/run/beamOn 10
+/run/beamOn 1000
 ```
 
 ## Damage model

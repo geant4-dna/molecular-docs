@@ -143,7 +143,7 @@ They use the following naming scheme:
 - "I" for an indirect damage
 - "~" if hit without damage
 - "-" if not hit
-- "X" for bith damage types
+- "X" for both damage types
 
 The numbers 6 and 7 represent damage source and damage complexity, respectively.
 
