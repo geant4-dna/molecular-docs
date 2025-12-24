@@ -1,0 +1,794 @@
+{"0": {
+    "doc": "Bacterial cell",
+    "title": "Bacterial cell (ecoli.mac)",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#bacterial-cell-ecolimac",
+    "relUrl": "/docs/examples/bacterial-cell#bacterial-cell-ecolimac"
+  },"1": {
+    "doc": "Bacterial cell",
+    "title": "Table of contents",
+    "content": ". | Bacterial cell (ecoli.mac) . | Overview | Geometry | Particle source | Damage model | Results | Important notes | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#table-of-contents",
+    "relUrl": "/docs/examples/bacterial-cell#table-of-contents"
+  },"2": {
+    "doc": "Bacterial cell",
+    "title": "Overview",
+    "content": "This example uses the E. coli bacterium geometry, which imitates the genome of the bacterium. The simulation can be run using the ecoli.mac macro file. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#overview",
+    "relUrl": "/docs/examples/bacterial-cell#overview"
+  },"3": {
+    "doc": "Bacterial cell",
+    "title": "Geometry",
+    "content": "The genome has been produced using four side-by-side Hilbert curve fractals (see FractalDNA). This creates 16,384 placement volumes that are assumed to be cubic boxes with a side length of 50 nm. This was composed of 7,200 straight segments, and 5,652 turned segments of DNA. We only placed placement volumes that fell inside an ellipsoid with a semi-major axis of 900 nm and two equal semi-minor axes of 400 nm, creating an elliptical geometry that corresponded roughly to the dimensions of an E. coli bacterium containing 4,864 placement volumes. The final geometry (Figure) contained 4.63 Mbp, similar again to the length of an E. coli genome. Here’s an example of a macro file: . # Geometry: size of World volume /world/worldSize 8 um # Chemistry: end time of chemistry stage /scheduler/endTime 1 us # Geometry: optimisation of voxelisation /dnageom/setSmartVoxels 1 # Geometry: distance from base pairs at which radicals are killed /dnageom/radicalKillDistance 4 nm # Geometry: deposited energy accumulation range limit to start recording SBs from direct effects /dnageom/interactionDirectRange 6 angstrom # Geometry: creation # - Side length for each placement /dnageom/placementSize 50 50 50 nm # - Scaling of XYZ in fractal definition file /dnageom/fractalScaling 50 50 50 nm # - Path to file that defines placement locations /dnageom/definitionFile geometries/bacteria-XFXFXFX-4.txt # - Set placement volumes /dnageom/placementVolume turn geometries/8strands_50nm_turn.txt /dnageom/placementVolume turntwist geometries/8strands_50nm_turn.txt true /dnageom/placementVolume straight geometries/8strands_50nm_straight.txt # Analysis: add ellipsoid chromosomal region of interest, with the name \"bacteria\" /chromosome/add bacteria ellipse 900 400 400 0 0 0 nm 0 0 0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#geometry",
+    "relUrl": "/docs/examples/bacterial-cell#geometry"
+  },"4": {
+    "doc": "Bacterial cell",
+    "title": "Particle source",
+    "content": "Electrons are simulated coming from an ellipse enclosing the bacterial cell (of the same dimensions as the cell) with energy 9.999 keV. The angular distribution of electron trajectories coming from the cell surface follows a cosine law, which simulates an isotropic radiation environment. # Source geometry /gps/pos/type Surface /gps/pos/shape Ellipsoid /gps/pos/centre 0 0 0 nm /gps/pos/halfx 900 nm /gps/pos/halfy 400 nm /gps/pos/halfz 400 nm /gps/ang/type cos # Source particle and energy /gps/particle e- /gps/energy 9.999 keV # Beam on /run/beamOn 50000 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#particle-source",
+    "relUrl": "/docs/examples/bacterial-cell#particle-source"
+  },"5": {
+    "doc": "Bacterial cell",
+    "title": "Damage model",
+    "content": "Direct damage model uses the 17.5 eV for lower and upper break threshold. The probability of 40 % for the production of strand break by OH (OH + 2-deoxyribose) is applied. /dnadamage/directDamageLower 17.5 eV /dnadamage/directDamageUpper 17.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.4 /dnadamage/inductionOHChance 0.0 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.4 /dnadamage/inductionHChance 0.0 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.4 /dnadamage/inductionEaqChance 0.0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#damage-model",
+    "relUrl": "/docs/examples/bacterial-cell#damage-model"
+  },"6": {
+    "doc": "Bacterial cell",
+    "title": "Results",
+    "content": "Output (see analysis) is analysed by using ecoli.C ROOT macro file. | Species hits (/Gy/Mbp) is defined by radical + DNA reactions, for example: EaqStrandHits is e_aq + DNA backbone . | Damage yield (/Gy/Mbp) is defined by DNA damage complexity (see classification model) . | Breaks yield (/Gy/Mbp) is showed for each break type (direct SSB, indirect SSB, DSB,…). | . Fragments distribution of DNA. A fragment is defined by a distance between two DSBs. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#results",
+    "relUrl": "/docs/examples/bacterial-cell#results"
+  },"7": {
+    "doc": "Bacterial cell",
+    "title": "Important notes",
+    "content": ". | The physics and chemistry models used since the 2018 publication of this model have evolved significantly, making comparison to past works difficult. Optimization of simulation parameters is thus required. | Further, an issue was identified in the geometry implementation of the 2018 work that is addressed in this corrigendum. | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell#important-notes",
+    "relUrl": "/docs/examples/bacterial-cell#important-notes"
+  },"8": {
+    "doc": "Bacterial cell",
+    "title": "Bacterial cell",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/bacterial-cell",
+    "relUrl": "/docs/examples/bacterial-cell"
+  },"9": {
+    "doc": "Chemistry model",
+    "title": "Table of contents",
+    "content": ". | Pre-chemical stage | Time step models . | Synchronous IRT method | Reaction rates between free radicals and DNA | Use of parallel worlds | Tips | . | References | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#table-of-contents",
+    "relUrl": "/docs/overview/chemistry-model.html#table-of-contents"
+  },"10": {
+    "doc": "Chemistry model",
+    "title": "Pre-chemical stage",
+    "content": "The energy transfer induced by ionizing radiation in a water medium occurs rapidly (on a scale of femtoseconds (fs)) during the physical stage of water radiolysis and is followed by the formation of radiolysis species. These species are created in a very short time (from femtoseconds (fs) to picoseconds (ps)), mainly through electronic events during the pre-chemical stage. These events—such as thermalization, solvation of sub-excitation electrons, electronic hole migration, and fast electronic recombination— can lead to chemical bond breaks and produce species. The excited H2O* and ionized H2O+ water molecules are dissociated into radical species based on dissociation channels used in Geant4-DNA [1][2][3]. The molecularDNA example is using the “option3” dissociation channels as default. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#pre-chemical-stage",
+    "relUrl": "/docs/overview/chemistry-model.html#pre-chemical-stage"
+  },"11": {
+    "doc": "Chemistry model",
+    "title": "Time step models",
+    "content": "Chemistry stage starts from 1 ps for all radio-induced reactive species which are assumed to be hard spherical particles while water is considered as a continuum. In this stage, time step models describe an action (reaction or diffusion) of species during a discretized time step. In the molecularDNA example, the time step models determinate a competition between free radical species recombination and indirect DNA damages. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#time-step-models",
+    "relUrl": "/docs/overview/chemistry-model.html#time-step-models"
+  },"12": {
+    "doc": "Chemistry model",
+    "title": "Synchronous IRT method",
+    "content": "The IRT method is based on the “Independent Pair Approximation”; thus, reactive pairs are assumed independent, that is, the reaction time between any reactant pairs does not depend on the other reactants present in the medium. Under this assumption, the reaction time is sampled from the reaction probability distributions of the reactant pairs that mainly depend on initial pair distance. The IRT method determines the minimum time to the next reaction. Reactive products created by reactions that have occurred can undergo reactions with other reactants. These new reactions then need to be considered and included in the possible reactions. While this is a considerable advantage in terms of computing time, the spatial–temporal information of the system is not simulated explicitly. As a complementary extension, synchronous IRT (or IRT-syn) implementation calculates a time step using IRT method for the next reaction that should occur. The reactive products created in this reaction and the remaining molecules are considered explicitly together to diffuse for the time step. Then, based on their new positions, the new random reaction times are re-evaluated sequentially for all the radicals in the system and the new minimum reaction time and corresponding reaction is selected for next time step. This procedure is repeated until the end time of simulation. By default, a maximum time step of 500 ps is applied to all chemistry simulations [4], in the TimeStepAction class. This means that the chemical reactions expected to occur beyond 500 ps are ignored, all remainig molecules undergo a 500 ps diffusion, and the table of reactions is fully recalculated. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#synchronous-irt-method",
+    "relUrl": "/docs/overview/chemistry-model.html#synchronous-irt-method"
+  },"13": {
+    "doc": "Chemistry model",
+    "title": "Reaction rates between free radicals and DNA",
+    "content": "Indirect damage occurs from the chemical reaction between a radical and a DNA molecule (see the table below). To induce indirect strand breaks, the chemical reaction occurs between the •OH radical and the 2-deoxyribose-phosphate group. The probabilities to induce a single strand break are described in the Indirect Damage through DamageModel class. | Reaction | Reaction rate (109 M-1s-1)[5] | . | 2-deoxyribose + •OH | 1.8 | . | Adenine + •OH | 6.1 | . | Guanine + •OH | 9.2 | . | Thymine + •OH | 6.4 | . | Cytosine + •OH | 6.1 | . | 2-deoxyribose + e-aq | 0.01 | . | Adenine + e-aq | 9.0 | . | Guanine + e-aq | 14.0 | . | Thymine + e-aq | 18.0 | . | Cytosine + e-aq | 13.0 | . | 2-deoxyribose + H• | 0.029 | . | Adenine + H• | 0.10 | . | Thymine + H• | 0.57 | . | Cytosine + H• | 0.092 | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#reaction-rates-between-free-radicals-and-dna",
+    "relUrl": "/docs/overview/chemistry-model.html#reaction-rates-between-free-radicals-and-dna"
+  },"14": {
+    "doc": "Chemistry model",
+    "title": "Use of parallel worlds",
+    "content": "The Geant4 chemistry module has difficulty dealing with complicated geometries due to dissociation processes, which can place the products of the molecular dissociation of an energetic molecule way from the dissociating molecule and geometry navigation, which requests computation time. To avoid having too many geometrical boundaries in chemistry simulations, all the physical volumes are placed in a separate parallel world, using the layered geometries offered by Geant4 (Enger et al., 2012). Thus, the physically placed DNA molecules described in this section are only seen by physical processes, and their boundaries are effectively ignored by chemistry. At each time step, chemical species are requests to look up nearby DNA molecules using an octree data structure. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#use-of-parallel-worlds",
+    "relUrl": "/docs/overview/chemistry-model.html#use-of-parallel-worlds"
+  },"15": {
+    "doc": "Chemistry model",
+    "title": "Tips",
+    "content": "Activate chemistry module using : . /chem/activate true # false for deactivation . The chemistry stage is simulated until 1 microsecond (by default). Users can decide the end time by using : . /scheduler/endTime 4 ns # set 4 nanosecond at which the simulation stops . To print reactions . /scheduler/verbose 1 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#tips",
+    "relUrl": "/docs/overview/chemistry-model.html#tips"
+  },"16": {
+    "doc": "Chemistry model",
+    "title": "References",
+    "content": "[1] Modeling radiation chemistry in the Geant4 toolkit, M. Karamitros et al., Prog. Nucl. Sci. Tec. 2 (2011) 503-508 - link . [2] Geant4-DNA simulation of the pre-chemical stage of water radiolysis and its impact on initial radiochemical yields, W.-G. Shin et al., Phys. Med. 88, 2021, 86-90 - link . [3] Review of chemical models and applications in Geant4-DNA: Report from the ESA BioRad III Project, H. N. Tran et al., Med. Phys. (2024) in press - link . [4] Mechanistic DNA Damage Simulations in Geant4-DNA Part 1: A parameter study in a simplified geometry, N. Lampe et al., Phys. Med. 48 (2018) 135-145 - link . [5] Critical review of rate constants for reactions of hydrated electrons, hydrogen atoms and hydroxyl radicals (·OH/·O-) − in aqueous solution, G. V. Buxton et al., J. Phys. Chem. Ref. Data. 17 (1988) 513–886 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html#references",
+    "relUrl": "/docs/overview/chemistry-model.html#references"
+  },"17": {
+    "doc": "Chemistry model",
+    "title": "Chemistry model",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/chemistry-model.html",
+    "relUrl": "/docs/overview/chemistry-model.html"
+  },"18": {
+    "doc": "Configuration glossary",
+    "title": "Configuration",
+    "content": "The custom Geant4 commands available in the molecularDNA application are listed here. These commands are implemented in the messenger classes of molecularDNA. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#configuration",
+    "relUrl": "/docs/overview/configuration#configuration"
+  },"19": {
+    "doc": "Configuration glossary",
+    "title": "Table of contents",
+    "content": ". | analysisDNA | cell | chromosome | damage | dnageom | dnatests | world | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#table-of-contents",
+    "relUrl": "/docs/overview/configuration#table-of-contents"
+  },"20": {
+    "doc": "Configuration glossary",
+    "title": "analysisDNA",
+    "content": "| command | description | parameters | . | analysisDNA/saveStrands | Bool to set whether strands ought be saved use /analysisDNA/strandDir to set location | . | (bool, Default: Not Set, Omittable: False) | . | . | analysisDNA/strandDir | Directory to save DNA damage fragments | . | DNA fragments (str, Default: Not Set, Omittable: False) | . | . | analysisDNA/fragmentGap | Gap between DNA fragments in base pairs. Set to zero to score placement volumes independently | . | Base Pair gap (int, Default: Not Set, Omittable: False) | . | . | analysisDNA/diagnosticChain | Save the position of hits histones only on one chain | . | Chain Index (int, Default: Not Set, Omittable: True) | . | . | analysisDNA/dsbDistance | Max separation of DSBs. Must be less than 31. | . | Max. DSB distance. (int, Default: Not Set, Omittable: False) | . | . | analysisDNA/testClassifier | Run unit test for break classification | | . | analysisDNA/fileName | ROOT output file name | . | ROOT output file name (str, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#analysisdna",
+    "relUrl": "/docs/overview/configuration#analysisdna"
+  },"21": {
+    "doc": "Configuration glossary",
+    "title": "cell",
+    "content": "| command | description | parameters | . | cell/radiusSize | Set semi-major axes for cell (x, y, z) - unset, whole world is water | . | xradius (double, Default: Not Set, Omittable: False) | yradius (double, Default: Not Set, Omittable: False) | zradius (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#cell",
+    "relUrl": "/docs/overview/configuration#cell"
+  },"22": {
+    "doc": "Configuration glossary",
+    "title": "chromosome",
+    "content": "| command | description | parameters (example for cyl) | . | chromosome/add | Add a chromosomal region for analysis of damage. Format: shape name geometry-commands shape is: sphere or cyl or rod or ellipse geometry-commands are: - for sphere: radius x y z unit [rx ry rz] - for cyl: radius height x y z unit [rx ry rz] - for rod: radius height x y z unit [rx ry rz] - for ellipse: x-half-axis y-half-axis z-half-axis x y z unit [rx ry rz] Rotations are optional and in degrees. For example, for an ellipsoid chromosomal region corresponding to a cell nucleus, one can use the following command (as in the macro human_cell.mac): /chromosome/add cell ellipse 7100 2500 7100 0 0 0 nm 0 0 0 | . | radius (double, Default: Not Set, Omittable: False) | height (double, Default: Not Set, Omittable: False) | x (double, Default: Not Set, Omittable: False) | y (double, Default: Not Set, Omittable: False) | z (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | [xrotation (double, Default: Not Set, Omittable: False) | yrotation (double, Default: Not Set, Omittable: False) | zrotation] (double, Default: Not Set, Omittable: False) | . | . | chromosome/plotData | Save plot data to specified file | . | name (str, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#chromosome",
+    "relUrl": "/docs/overview/configuration#chromosome"
+  },"23": {
+    "doc": "Configuration glossary",
+    "title": "damage",
+    "content": "| command | description | parameters | . | dnadamage/directDamageLower | Minimum Energy required for an SSB. Chance grows linearly until it reaches the upper value. | . | energy value (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnadamage/directDamageUpper | Energy required for an SSB to definitely occur | . | energy value (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectOHBaseChance | Chance [0,1] of a OH damaging a base | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectOHStrandChance | Chance [0,1] of a OH damaging sugar-phosphate | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/inductionOHChance | Chance [0,1] of a Base + OH -&gt; strand break | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectHBaseChance | Chance [0,1] of a H damaging a base | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectHStrandChance | Chance [0,1] of a H damaging sugar-phosphate | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/inductionHChance | Chance [0,1] of a Base + H -&gt; strand break | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectEaqBaseChance | Chance [0,1] of a Eaq damaging a base | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/indirectEaqStrandChance | Chance [0,1] of a Eaq damaging sugar-phosphate | . | chance (double, Default: Not Set, Omittable: False) | . | . | dnadamage/inductionEaqChance | Chance [0,1] of a Base + Eaq -&gt; strand break | . | chance (double, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#damage",
+    "relUrl": "/docs/overview/configuration#damage"
+  },"24": {
+    "doc": "Configuration glossary",
+    "title": "dnageom",
+    "content": "| command | description | parameters | . | dnageom/placementVolume | Set a placement volume format: name path | . | name path (str, Default: Not Set, Omittable: False) | . | . | dnageom/definitionFile | Path to file that defines placement locations | . | path (str, Default: Not Set, Omittable: False) | . | . | dnageom/placementSize | Side length for each placement (x, y, z) | . | xlength (double, Default: Not Set, Omittable: False) | ylength (double, Default: Not Set, Omittable: False) | zlength (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnageom/fractalScaling | Scaling of XYZ in fractal definition file | . | xlength (double, Default: Not Set, Omittable: False) | ylength (double, Default: Not Set, Omittable: False) | zlength (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnageom/checkOverlaps | Check overlaps in DNA geometry region | . | true/false check overlaps (bool, Default: Not Set, Omittable: False) | . | . | dnageom/verbose | Verbosity for DNA geometry | . | int verbose level (int, Default: Not Set, Omittable: False) | . | . | dnageom/setSmartVoxels | Optimisation value (int) for smart voxels The G4 default is 2 | . | Optimisation value (int, Default: Not Set, Omittable: False) | . | . | dnageom/interactionDirectRange | Critical range to start recording SSBs from direct effects | . | Range (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnageom/radicalKillDistance | Distance from base pairs at which to kill radicals | . | Range (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . | dnageom/activateHistoneScavenging | Activate Histone scavenging function | . | true/false Histone function (bool, Default: Not Set, Omittable: False) | . | . | dnageom/drawCellVolumes | Draw cell/chromosome volumes rather than DNA (makes DNA invisible) | . | true/false draw cell volumes (bool, Default: Not Set, Omittable: False) | . | . | dnageom/setVoxelPlacementAnglesAsMultiplesOfPi | Take the angles in the voxel placement file as multiples of pi. E.g. set to true if the angle 0.5 should mean 90 degrees. | . | true/false (bool, Default: Not Set, Omittable: False) | . | . | dnageom/useCustomMoleculeSizes | Enable custom molecule sizes. These can be set via /dnageom/moleculeSize. | . | true/false (bool, Default: Not Set, Omittable: False) | . | . | dnageom/moleculeSize | Set a molecule size in angstrom. format: molecule_name x y z. E.g.: PHOSPHATE 3 4 5. Note: molecule names are case insensitive. | . | name (str, Default: Not Set, Omittable: False) | xlength (double, Default: Not Set, Omittable: False) | ylength (double, Default: Not Set, Omittable: False) | zlength (double, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#dnageom",
+    "relUrl": "/docs/overview/configuration#dnageom"
+  },"25": {
+    "doc": "Configuration glossary",
+    "title": "dnatests",
+    "content": "| command | description | parameters | . | dnatests/basepairs | Test chromosome placement classes | . None . | . | dnatests/chromosome | Test base pair indices are correct | . None . | . | dnatests/uniqueid | Test unique ID algorithm | . None . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#dnatests",
+    "relUrl": "/docs/overview/configuration#dnatests"
+  },"26": {
+    "doc": "Configuration glossary",
+    "title": "world",
+    "content": "| command | description | parameters | . | world/worldSize | Side length for the world | . | Side length (double, Default: Not Set, Omittable: False) | Unit (str, Default: Not Set, Omittable: False) | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration#world",
+    "relUrl": "/docs/overview/configuration#world"
+  },"27": {
+    "doc": "Configuration glossary",
+    "title": "Configuration glossary",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/configuration",
+    "relUrl": "/docs/overview/configuration"
+  },"28": {
+    "doc": "Damage model",
+    "title": "Damage model",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#damage-model",
+    "relUrl": "/docs/overview/damage-model#damage-model"
+  },"29": {
+    "doc": "Damage model",
+    "title": "Table of contents",
+    "content": ". | Direct damage | Indirect damage | Damage classification model | Radical scavenging | References | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#table-of-contents",
+    "relUrl": "/docs/overview/damage-model#table-of-contents"
+  },"30": {
+    "doc": "Damage model",
+    "title": "Direct damage",
+    "content": "Direct Damage occurs when energy from physical processes is deposited near a DNA molecule. In molecularDNA, we associate damage either with a ‘strand’ molecule (sugar or phosphate placement) or a base molecule. The maximum distance from the centre of a molecule which can result in any energy deposition tied to that model is called the direct interaction range and can be set using dnageom/interactionDirectRange. To assign damage, the program looks up all molecules with the direct interaction range of a given energy deposition and assigns the damage to the closest molecule. In the literature direct strand break damage models typically take the sum of the energy depositions in the sugar-phosphate part of the DNA strand and calculate the chance of a break based on the energy deposition. We simulate this using the /dnadamage/directDamageLower and /dnadamage/directDamageUpper commands. Essentially: . | Energy deposition below directDamageLower never causes a break | Energy deposition above directDamageUpper always causes a break | Between these bounds, the likelihood of a break rises uniformly | . The likelihood of a break, for a lower bound of 5 eV and an upper bound of 37.5 eV is shown below . Some models assume a step likelihood function for physical damage. This can be modelled by setting /dnadamage/directDamageLower and /dnadamage/directDamageUpper to the same value. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#direct-damage",
+    "relUrl": "/docs/overview/damage-model#direct-damage"
+  },"31": {
+    "doc": "Damage model",
+    "title": "Indirect damage",
+    "content": "Indirect damage is scored when a chemical reaction leads to a strand break. The chemical reactions between radicals and DNA elements themselves are defined in the chemistry model through the ChemistryList class. The phosphate part of the sugar-phosphate backbone rarely takes part in reactions (reactions between radicals and phosphate are not even defined in the simulation), so the main factors in the indirect damage model are the likelihoods that a reaction between a radical and the DNA backbone lead to a single strand break (SSB). Each probability is defined through the macro interface as below : . | Reaction | Macro Command | . | \\(Pr(\\ce{e^{-}_{aq}} + \\mathrm{Sugar} \\rightarrow \\mathrm{SSB})\\) | /dnadamage/indirectEaqStrandChance | . | \\(Pr(H^{\\bullet} + \\mathrm{Sugar} \\rightarrow \\mathrm{SSB})\\) | /dnadamage/indirectHStrandChance | . | \\(Pr(\\ce{^{\\bullet}OH} + \\mathrm{Sugar} \\rightarrow \\mathrm{SSB})\\) | /dnadamage/indirectOHStrandChance | . Base damage is modelled through a similar interface, though two steps are provided for the modelling of both base damage generally, and also strand break induction (while this might seem redundant, it was coded for a level of flexibility). For a given base, we can consider separately the likelihood that the chemical reaction between the base and the radical causes damage to the base pair, and the likelihood it causes a strand break. In the case of \\(\\ce{^{\\bullet}OH}\\) /dnadamage/indirectOHBaseChance 0.5 would set the likelihood that the simulation should consider a reaction between \\(\\ce{^{\\bullet}OH}\\) and a base as damage as 50%. If base damage does occur, /dnadamage/inductionOHChance 0.4 would mean that following base damage, the chance of that damage causing an SSB is 40%. Note that these are dependent events, so the likelihood of the reaction causing an SSB is 20%. For most work, you would probably consider all chemical reactions with a base as base damage, but assume these don’t lead to SSBs. This requires the following settings for all radicals: . /dnadamage/indirectOHBaseChance 1.0 /dnadamage/inductionOHChance 0.0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#indirect-damage",
+    "relUrl": "/docs/overview/damage-model#indirect-damage"
+  },"32": {
+    "doc": "Damage model",
+    "title": "Damage classification model",
+    "content": ". Breaks in a DNA segment are classified both by complexity (left) and source (right) [1] . The model entails two parameters, dDSB is the maximum separation between two damage sites on alternate sides of a DNA strand for us to consider that a DSB has occurred (typically dDSB = 10 bp). ds is the distance between two damage sites for us to consider that the damage events should be considered as two separate breakages (yielding two separate segments that need classification). Whilst many of the classifications are clear, we note that a DSB+ requires a DSB and at least one additional break within a ten base pair separation, while a DSB++ requires at least two DSBs along the segment, regardless of whether they are within dDSB of each other or not. For break complexity, the most complex break type is always chosen. When classifying breaks by source, we pay attention not to all damage along the strand, but to the damage which causes DSBs only. DSBs from only indirect sources are classified as DSBi, and those only from direct sources are classified as DSBd. DSBhyb is distinguished from DSBm, as DSBhyb requires that the DSB not occur in the absence of indirect damage. Otherwise, a break caused by indirect and direct sources is classified as DSBm. Where a segment contains both indirect and direct DSBs, it is classified as DSBm. Similarly, when a segment contains a DSB classified as DSBhyb in conjunction with a direct DSB or mixed DSB, it takes the DSBm classification, otherwise it keeps the classification DSBhyb. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#damage-classification-model",
+    "relUrl": "/docs/overview/damage-model#damage-classification-model"
+  },"33": {
+    "doc": "Damage model",
+    "title": "Radical scavenging",
+    "content": "One of the most important parameters in the simulation is /dnageom/radicalKillDistance which specifies the spatial region in which we calculate chemistry. This parameter is complimentary with what other simulations would model as scavenging or an early simulation cut-off time, in that it is linked to the distance a radical is expected to diffuse before the simulation ends. In particular, for a radical with a diffusion constant \\(D_c\\), we expect it to diffuse a distance \\(\\bar{x}\\) in time \\(t\\) as follows: . \\[\\bar{x} = \\sqrt{6D_ct}\\] For the \\(\\ce{^{\\bullet}OH}\\) radical (\\(D_c=2.8\\times 10^{-9}m^2s^{-1}\\)), this gives \\(\\bar{x} = 4.09 \\sqrt{t} \\ \\mathrm{nm}\\). Typically for simulations of cells in molecularDNA, this means that a radical kill distance of 4nm-6nm yields reliable results, while larger radical kill distances would require scavenging to be more broadly implemented. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#radical-scavenging",
+    "relUrl": "/docs/overview/damage-model#radical-scavenging"
+  },"34": {
+    "doc": "Damage model",
+    "title": "References",
+    "content": "[1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model#references",
+    "relUrl": "/docs/overview/damage-model#references"
+  },"35": {
+    "doc": "Damage model",
+    "title": "Damage model",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/damage-model",
+    "relUrl": "/docs/overview/damage-model"
+  },"36": {
+    "doc": "DNA placements",
+    "title": "DNA placements",
+    "content": "The DNA placements here were built using the FractalDNA package in Python. Accompanying each geometry is the Python code to generate it. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/dna-placements",
+    "relUrl": "/docs/geometry-library/dna-placements"
+  },"37": {
+    "doc": "DNA placements",
+    "title": "Single DNA segments",
+    "content": "Straight and turned segments for a 50nm box. | Straight segment (see link) | Turned segment (see link) | Turned segment with 90° rotation (see link) | . Generating code . from fractaldna.dna_models import dnachain import numpy as np bp_separation = dnachain.BP_SEPARATION # 3.32Å side_length_nm = 50 # nm num_basepairs_straight = int( side_length_nm / (0.1*bp_separation) ) num_basepairs_turned = int((side_length_nm * np.pi / 4.) / (0.1*bp_separation)) chain_straight = dnachain.DNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_straight)) ) chain_turned = dnachain.TurnedDNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_turned)) ) chain_turned_twisted = dnachain.TurnedTwistedDNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_turned)) ) chain_straight.to_frame().to_csv('50nm_straight.csv', sep=' ', index=False) chain_turned.to_frame().to_csv('50nm_turn.csv', sep=' ', index=False) chain_turned_twisted.to_frame().to_csv('50nm_turn_twist.csv', sep=' ', index=False) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/dna-placements#single-dna-segments",
+    "relUrl": "/docs/geometry-library/dna-placements#single-dna-segments"
+  },"38": {
+    "doc": "DNA placements",
+    "title": "Simple DNA segments with multiple strands",
+    "content": "Sometimes to make denser DNA, you will want to increase the amount of DNA in a voxel. The following placements contain 4 parallel DNA strands. | Straight (see link) | Turned (see link) | Turned Twisted (see link) | . Generating code . bp_separation = dnachain.BP_SEPARATION # 3.32Å side_length_nm = 50 # nm num_basepairs_straight = int( side_length_nm / (0.1*bp_separation) ) num_basepairs_turned = int((side_length_nm * np.pi / 4.) / (0.1*bp_separation)) strand_separation = 100 # angstroms chain4_straight = dnachain.FourStrandDNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_straight)), strand_separation ) chain4_turned = dnachain.FourStrandTurnedDNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_turned)), strand_separation ) chain4_turned_twisted = dnachain.FourStrandTurnedDNAChain( ''.join(np.random.choice(['G', 'A', 'T', 'C'], num_basepairs_turned)), strand_separation, twist=True ) chain4_straight.to_frame().to_csv('results/50nm_4_straight.csv', sep=' ', index=False) chain4_turned.to_frame().to_csv('results/50nm_4_turn.csv', sep=' ', index=False) chain4_turned_twisted.to_frame().to_csv('results/50nm_4_turn_twist.csv', sep=' ', index=False) . The following placements contain 8 parallel DNA strands. | Straight (see link) | Turned (see link) | Turned Twisted (see link) | . Generating code . %%capture bp_separation = dnachain.BP_SEPARATION # 3.32Å side_length_nm = 50 # nm num_basepairs_straight = int(side_length_nm / (0.1 * bp_separation)) num_basepairs_turned = int((side_length_nm * np.pi / 4.0) / (0.1 * bp_separation)) strand_separation_1 = 100 # angstroms strand_separation_2 = 250 # angstroms chain8_straight = dnachain.EightStrandDNAChain( \"\".join(np.random.choice([\"G\", \"A\", \"T\", \"C\"], num_basepairs_straight)), strand_separation_1, strand_separation_2, turn=False, twist=False ) chain8_turned = dnachain.EightStrandDNAChain( \"\".join(np.random.choice([\"G\", \"A\", \"T\", \"C\"], num_basepairs_turned)), strand_separation_1, strand_separation_2, turn=True, twist=False ) chain8_turned_twisted = dnachain.EightStrandDNAChain( \"\".join(np.random.choice([\"G\", \"A\", \"T\", \"C\"], num_basepairs_turned)), strand_separation_1, strand_separation_2, turn=True, twist=True ) chain8_straight.to_frame().to_csv(\"results/50nm_8_straight.csv\", sep=\" \", index=False) chain8_turned.to_frame().to_csv(\"results/50nm_8_turn.csv\", sep=\" \", index=False) chain8_turned_twisted.to_frame().to_csv( \"results/50nm_8_turn_twist.csv\", sep=\" \", index=False ) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/dna-placements#simple-dna-segments-with-multiple-strands",
+    "relUrl": "/docs/geometry-library/dna-placements#simple-dna-segments-with-multiple-strands"
+  },"39": {
+    "doc": "DNA placements",
+    "title": "Solenoidal DNA segments",
+    "content": "You can also make solenoidal DNA. The following placements contain Solenoidal DNA . | Straight (see link) | Turned (see link) | Turned Twisted (see link) | . Generating code . from fractaldna.dna_models import dnachain side_length = 750 # angstrom radius_solenoid = 100 # angstrom nhistones = 38 # histones solenoid_straight = dnachain.Solenoid( voxelheight=side_length, radius=radius_solenoid, nhistones=nhistones ) solenoid_turned = dnachain.TurnedSolenoid( voxelheight=side_length, radius=radius_solenoid, nhistones=nhistones ) solenoid_turned_twisted = dnachain.TurnedSolenoid( voxelheight=side_length, radius=radius_solenoid, nhistones=nhistones, twist=True ) # centre around (x,y,z)=(0,0,0) solenoid_straight.translate([0, 0, -side_length/2.]) solenoid_turned.translate([0, 0, -side_length/2.]) solenoid_turned_twisted.translate([0, 0, -side_length/2.]) solenoid_straight.to_frame().to_csv('results/solenoid_straight.csv', sep=' ', index=False) solenoid_turned.to_frame().to_csv('results/solenoid_turned.csv', sep=' ', index=False) solenoid_turned_twisted.to_frame().to_csv('results/solenoid_turned_twisted.csv', sep=' ', index=False) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/dna-placements#solenoidal-dna-segments",
+    "relUrl": "/docs/geometry-library/dna-placements#solenoidal-dna-segments"
+  },"40": {
+    "doc": "DNA placements",
+    "title": "Multiple solenoidal volumes",
+    "content": "Here we make volumes that contain 4 solenoids: . The following placements contain solenoidal DNA . | Straight (see link) | Turned (see link) | Turned twisted (see link) | . Generating code . side_length = 1000 # angstrom radius_solenoid = 100 # angstrom nhistones = 51 # histones separation = 250 # angstroms solenoid4_straight = dnachain.MultiSolenoidVolume( voxelheight=side_length, separation=separation, radius=radius_solenoid, nhistones=nhistones, chains=[1, 2, 3, 4], turn=False, twist=False, ) solenoid4_turned = dnachain.MultiSolenoidVolume( voxelheight=side_length, separation=separation, radius=radius_solenoid, nhistones=nhistones, chains=[1, 2, 3, 4], turn=True, twist=False ) solenoid4_turned_twisted = dnachain.MultiSolenoidVolume( voxelheight=side_length, separation=separation, radius=radius_solenoid, nhistones=nhistones, chains=[1, 2, 3, 4], turn=True, twist=True ) # centre around (x,y,z)=(0,0,0) solenoid4_straight.translate([0, 0, -side_length/2.]) solenoid4_turned.translate([0, 0, -side_length/2.]) solenoid4_turned_twisted.translate([0, 0, -side_length/2.]) solenoid4_straight.to_frame().to_csv('results/solenoid4_straight.csv', sep=' ', index=False) solenoid4_turned.to_frame().to_csv('results/solenoid4_turned.csv', sep=' ', index=False) solenoid4_turned_twisted.to_frame().to_csv('results/solenoid4_turned_twisted.csv', sep=' ', index=False) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/dna-placements#multiple-solenoidal-volumes",
+    "relUrl": "/docs/geometry-library/dna-placements#multiple-solenoidal-volumes"
+  },"41": {
+    "doc": "Available geometries",
+    "title": "Available DNA geometries",
+    "content": "The available DNA geometries are controlled by macro files included in molecularDNA. Associated pre-existing geometry files can be automatically downloaded when the application is built (see Running from the example). ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples#available-dna-geometries",
+    "relUrl": "/docs/examples#available-dna-geometries"
+  },"42": {
+    "doc": "Available geometries",
+    "title": "Available geometries",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples",
+    "relUrl": "/docs/examples"
+  },"43": {
+    "doc": "Fractal DNA package",
+    "title": "The FractalDNA package",
+    "content": "Geometries for use in molecularDNA can be generated yourself, or with the help of the FractalDNA package in Python. The FractalDNA package (see the documentation here) provides Python methods for building DNA segments that can be joined together by the molecularDNA application, as well as assembling geometries. FractalDNA can be installed from PyPI: . pip install fractaldna . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/fractal-dna#the-fractaldna-package",
+    "relUrl": "/docs/geometry-library/fractal-dna#the-fractaldna-package"
+  },"44": {
+    "doc": "Fractal DNA package",
+    "title": "Fractal DNA package",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/fractal-dna",
+    "relUrl": "/docs/geometry-library/fractal-dna"
+  },"45": {
+    "doc": "Building geometries",
+    "title": "Building geometries",
+    "content": "Here you’ll find geometries that can be used with the molecularDNA example. If you want to make new geometries, you can start with the FractalDNA tools which are accessible on github, or read about our geometry model. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/building-geometries",
+    "relUrl": "/docs/building-geometries"
+  },"46": {
+    "doc": "Geometry model",
+    "title": "Geometry model",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/geometry-model",
+    "relUrl": "/docs/overview/geometry-model"
+  },"47": {
+    "doc": "Geometry model",
+    "title": "Table of contents",
+    "content": ". | Design principle | DNA placements . | Specifying molecule sizes | Adding multiple chains | Defining DNA placements | Considerations for base pairs | . | Geometry placements | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/geometry-model#table-of-contents",
+    "relUrl": "/docs/overview/geometry-model#table-of-contents"
+  },"48": {
+    "doc": "Geometry model",
+    "title": "Design principle",
+    "content": "The molecularDNA application was made to make it easy to define a DNA geometry, and then place it repeatedly to model a complex geometry at large scales, as below. There are two important notions when we define the geometry, placement definition and the geometry definition, often called the fractal definition as it is often seeded with a fractal. | Placement definition defines the small scale structure of the simulation. | Geometry definition defines the large scale structure of the simulation. | . Some examples of how to make these files are available on Github, and examples can be found from the Available geometries . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/geometry-model#design-principle",
+    "relUrl": "/docs/overview/geometry-model#design-principle"
+  },"49": {
+    "doc": "Geometry model",
+    "title": "DNA placements",
+    "content": "DNA placements are the low level building block of the DNA geometry and show how the DNA sits in a given prism. A simple example of this is below, containing 14 base pairs (grey), alongside the sugar (red) and phosphate (yellow) molecules in the chain. These files are specified as either 11 or 14 column ASCII text files with the schema below: . | MOLECULE_NAME - name of the molecule | SHAPE optional - shape of the molecule (sphere or ellipse) | CHAIN_ID - index for the chain | STRAND_ID - index for the strand (either left or right side of the DNA molecule) | BP_INDEX - index of the base pair in the volume (per chain) | SIZE_X optional - semi-major x axis of ellipse (Å) | SIZE_Y optional - semi-major y axis of ellipse (Å) | SIZE_Z optional - semi-major z axis of ellipse (Å) | POS_X - x position in volume (Å) | POS_Y - y position in volume (Å) | POS_Z - z position in volume (Å) | ROT_X - rotation around the X-axis | ROT_Y - rotation around the Y-axis | ROT_Z - Rotation around the Z-axis | . Distances are specified in Angstrom, while angles are specified in radians (and correspond to the three Euler angles). Specifying molecule sizes . The molecule size columns are optional, as they can either fall back onto the default sizes or be set to custom sizes in the macro definition via: . /dnageom/useCustomMoleculeSizes /dnageom/moleculeSize name x y z units . Note that molecule name matches are case insensitive. The default molecule names and sizes are: . | Molecule name | X semi-major axis (Å) | Y semi-major axis (Å) | Z semi-major axis (Å) | . | phosphate | 2.282354 | 2.282354 | 2.282354 | . | sugar | 2.632140 | 2.632140 | 2.632140 | . | guanine | 3.631503 | 3.799953 | 1.887288 | . | cytosine | 3.597341 | 3.066331 | 1.779361 | . | adenine | 3.430711 | 3.743504 | 1.931958 | . | thymine | 4.205943 | 3.040448 | 2.003359 | . | histone | 25 | 25 | 25 | . Adding multiple chains . A simple way to increase the density of DNA in simulations is to place multiple chains of DNA in each placement volume. Multiple ‘chains’ can be placed in the one placement volume as shown below, provided that they each have a different chain_id in the data file. Here, we show graphically what a 1-chain and 4-chain placement volume could look like. The simulation platform supports 1, 4 and 8 chains. It will join chains together correctly even when placement volumes are rotated along the lines of the image shown below. Defining DNA placements . Placement files should be defined with either of the following two (space seperated) schemas: . Specifying size for every molecule . NAME SHAPE CHAIN_ID STRAND_ID BP_INDEX SIZE_X SIZE_Y SIZE_Z POS_X POS_Y POS_Z ROT_X ROT_Y ROT_Z . Not specifying size for every molecule . NAME CHAIN_ID STRAND_ID BP_INDEX POS_X POS_Y POS_Z ROT_X ROT_Y ROT_Z . Spatial units are Angstroms, angles are in radians. Molecule names cannot contain spaces. The program assumes that the file is ordered first by base pair, then strand, then chain as below, keeping the order phosphate, sugar then base. Histones when specified can be placed anywhere in the file however (they are often at the start or end). NAME ... CHAIN_ID STRAND_ID BP_INDEX Phosphate 0 0 0 Sugar 0 0 0 Base 0 0 0 Phosphate 0 1 0 Sugar 0 1 0 Base 0 1 0 Phosphate 0 0 1 Sugar 0 0 1 Base 0 0 1 Phosphate 0 1 1 Sugar 0 1 1 Base 0 1 1 Phosphate 0 0 2 Sugar 0 0 2 Base 0 0 2 Phosphate 0 1 2 Sugar 0 1 2 Base 0 1 2 Phosphate 1 0 1 Sugar 1 0 1 Base 1 0 1 . The order phosphate - sugar - base must always be kept. Each chain is specified completely before a new chain starts, and base pair sections are specified in their entirety before a new base pair section is specified. This is done to enable the file to be read in such that their is a fixed distance between any molecule and its neighbours. This facilitates the cutting of certain shapes within Geant4 so that each shape can be represented with the maximum volume possible. The program will assume the neighbouring molecules for a given sugar, phosphate or base are: . | Base Pair, strand ID 0: sugar at :-1, base at :+3, base at :-6 | Base Pair, strand ID 1: sugar at :-1, base at :-3, base at :-6 | Sugar: phosphate at L-1 | Phosphate: sugar at L+5 | . Once defined, a placement volume can be loaded using the following command: . /dnageom/placementVolume name path twist . For example: . /dnageom/placementVolume turntwist geometries/turned_twisted_solenoid_750.txt true . Considerations for base pairs . When building the geometry, you’ll probably consider a base pair in an unrotated space and then rotate the base pair to produce the chain you desire, as well as the standard double helix. Our geometries have been built and tested with the primary axis of the double helix in a straight DNA segment being the Z-axis. Similarly, a base pair on its own is built so that its height (the 3.4 Å-long axis) is the Z-axis. We rely on this assumption to know that, in a frame of reference prior to any rotation, a base pair should be roughly 3.4 Å in height. This assumption is used to help stop molecule placements intersecting each other. If you are developing geometries alongside the Python package FractalDNA, these changes should be done automatically. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/geometry-model#dna-placements",
+    "relUrl": "/docs/overview/geometry-model#dna-placements"
+  },"50": {
+    "doc": "Geometry model",
+    "title": "Geometry placements",
+    "content": "The Geometry definition files describe how the DNA placements should be put into the simulation world. Often it will define tesselating cubes that join DNA together in a snake-like pattern, though it can also be used to place non-connected DNA elements (e.g. this parameter study). Three control parameters are useful when placing the geometry: . | /analysisDNA/fragmentGap 0 will treat all placements as separate, preventing any joining between strands. | /dnageom/setVoxelPlacementAnglesAsMultiplesOfPi will load the Euler angles for placement volumes as multiples of pi. | /dnageom/fractalScaling X Y Z nm will scale the distances in the geometry file by the values specified. | e.g. /dnageom/fractalScaling 1 1 1 nm will mean that the geometry file is in units of nm. | . | . The schema for the geometry placement files is as follows, with rotations being the Euler angles. | IDX - placement index | KIND - placement name (should correspond to a DNA volume definition) | POS_X - X position (mm if not scaled) | POS_Y - Y position (mm if not scaled) | POS_Z - Z position (mm if not scaled) | EUL_PSI - placement rotation (psi) | EUL_THETA - placement rotation (theta) | EUL_PHI - placement rotation (phi) | . An example file might look like this. #IDX KIND POS_X POS_Y POS_Z EUL_PSI EUL_THETA EUL_PHI 0 straight 0.0 0.0 0.0 0.0 -0.0 0.0 1 turn 0.0 0.0 1.0 0.0 -0.0 1.57079632679 2 turn 0.0 1.0 1.0 -1.57079632679 1.57079632679 0 3 turntwist -0.0 1.0 0.0 3.14159265359 -0.0 0.0 4 turn 1.0 1.0 -0.0 -3.14159265359 -1.57079632679 0 5 turntwist 1.0 1.0 1.0 0.0 -0.0 -1.57079632679 6 turn 1.0 0.0 1.0 1.57079632679 1.57079632679 0 7 straight 1.0 0.0 -0.0 3.14159265359 -0.0 0.0 . And could be loaded like this: . /dnageom/definitionFile /path/to/definition.txt # or another path /dnageom/fractalScaling 50 50 50 nm # scale each unit to 50 nm blocks . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/geometry-model#geometry-placements",
+    "relUrl": "/docs/overview/geometry-model#geometry-placements"
+  },"51": {
+    "doc": "Geometry placements",
+    "title": "Geometry placements",
+    "content": "The geometry placements here were built using the FractalDNA package package in Python. Accompanying each geometry is the Python code to generate it. These geometries are based on iterating a fractal L-string. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/geometry-placements",
+    "relUrl": "/docs/geometry-library/geometry-placements"
+  },"52": {
+    "doc": "Geometry placements",
+    "title": "Square geometry",
+    "content": "A square geometry can be easily generated using the X fractal seed. | Download with 1 iteration (link) | Download with 2 iteration (link) | Download with 3 iteration (link) | Download with 4 iterations (link) | Download with 5 iterations (link) | Download with 6 iterations (link) | Download with 7 iterations (link) | Download with 8 iterations (link) | . # Start with the initial L-String X for a Hilbert Curve initial_string = 'X' # Iterate it as required (here, nn=3) # for nn = 8, this takes about two hours on my MacBook Pro 16GB RAM nn = 3 iterated_lstring = h.iterate_lstring(initial_string) for _ in range(nn-1): iterated_lstring = h.iterate_lstring(iterated_lstring) vf = v.VoxelisedFractal.fromLString(iterated_lstring, pbar=True) vf.center_fractal() # fig = vf.to_plot() # fig.savefig('results/fractal-X-3-centred.svg') # If you are saving a BIG fractal, try using the to_text() method instead # as large dataframes are very slow to generate beyond 6 iterations. # with open(f'results/fractal-X-{nn}-centred.csv', 'w') as ff: # ff.write(vf.to_text()) vf.to_frame().to_csv(f'results/fractal-X-{nn}-centred.csv', index=False, sep=' ') . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/geometry-placements#square-geometry",
+    "relUrl": "/docs/geometry-library/geometry-placements#square-geometry"
+  },"53": {
+    "doc": "Geometry placements",
+    "title": "Rectangular geometry",
+    "content": "A square geometry can be easily generated using the XFXFX fractal seed. The aspect ratio will be: . | 1x1x2 for XFX | 1x1x3 for XFXFX | 1x1x4 for XFXFXFX | and so on as the seed changes. | Download XFXFX iterated 2 times (link) | Download XFXFX iterated 3 times (link) | Download XFXFX iterated 4 times (link) | . # Start with the initial L-String XFXFX for a Hilbert Curve initial_string = 'XFXFX' # Iterate it as required (here, nn=4) nn = 4 iterated_lstring = h.iterate_lstring(initial_string) for _ in range(nn-1): iterated_lstring = h.iterate_lstring(iterated_lstring) vf = v.VoxelisedFractal.fromLString(iterated_lstring, pbar=True) vf.center_fractal() # fig = vf.to_plot() # fig.savefig(f'results/fractal-XFXFX-{nn}-centred.svg') vf.to_frame().to_csv(f'results/fractal-XFXFX-{nn}-centred.csv', index=False, sep=' ') . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/geometry-placements#rectangular-geometry",
+    "relUrl": "/docs/geometry-library/geometry-placements#rectangular-geometry"
+  },"54": {
+    "doc": "Geometry placements",
+    "title": "Generating geometries from a path",
+    "content": "The voxelisation model can convert the path of this curve to a voxelised representation, of straight and curved boxes. In this example we perform this on a text file with X/Y/Z columns (link) to produce this output file . df = pd.read_csv('example-path.csv', sep='\\t') fig = plt.figure() ax = fig.add_subplot(111, projection=\"3d\") ax.plot(df.X, df.Y, df.Z) fig.savefig('example-path.svg') vf = v.VoxelisedFractal.from_path(df.values) fig_fractal = vf.to_plot() fig_fractal.savefig('example-path-voxels.svg') vf.to_frame().to_csv('results/example-path-voxels.csv', sep=' ') . The below images show that the paths made by the voxelised geometry (right) are identical to those in the source geometry (left) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/geometry-placements#generating-geometries-from-a-path",
+    "relUrl": "/docs/geometry-library/geometry-placements#generating-geometries-from-a-path"
+  },"55": {
+    "doc": "Geometry placements",
+    "title": "Generating random placements",
+    "content": "It can be useful to generate randomised volumes for testing a simulation (see parameter study). This was the subject of this article. To generate a randomised volume, the fractaldna.structure_models.random_placements is available. In that paper, 200,000 non overlapping prisms were simulated in a r=3000nm ball. The prisms had dimensions 30x30x100nm and a sample file can be downloaded here. Note that the saved file doesn’t contain the dimensions of the prisms as this is instead fed to the macro file directly. from fractaldna.structure_models import random_placements as rp # Generating 200,000 prisms can take around 4-5 hours and will slow down # as more are added prisms = rp.generate_non_overlapping_prisms( n_prisms=200_000, size=[30, 30, 100], # nanometres rad=3000, # nanometres early_exit=-1, verbose=True) df = prisms.to_frame() df.to_csv('results/prisms_200k_r3000.csv', sep=' ', index=False) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/geometry-library/geometry-placements#generating-random-placements",
+    "relUrl": "/docs/geometry-library/geometry-placements#generating-random-placements"
+  },"56": {
+    "doc": "Human cell",
+    "title": "Human cell (human_cell*.mac)",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#human-cell-human_cellmac",
+    "relUrl": "/docs/examples/human-cell#human-cell-human_cellmac"
+  },"57": {
+    "doc": "Human cell",
+    "title": "Table of contents",
+    "content": ". | Human cell (human_cell*.mac) . | Overview | Geometry | Particle source | Damage model | Results | List of Geant4 macros | List of ROOT macros | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#table-of-contents",
+    "relUrl": "/docs/examples/human-cell#table-of-contents"
+  },"58": {
+    "doc": "Human cell",
+    "title": "Overview",
+    "content": "DNA damage induced by irradiation in a simplified human fibroblast cell can be simulated using the provided human_cell.mac macro file. A large amount of memory and computer performance will be required for this example. The parameters used in the macro file and shown in this page are further described in Phys. Med. 112 (2023) 102613 (link) and in Phys. Med. 127 (2024) 104389 (link). ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#overview",
+    "relUrl": "/docs/examples/human-cell#overview"
+  },"59": {
+    "doc": "Human cell",
+    "title": "Geometry",
+    "content": "The default geometry (macro human_cell.mac) consists of a continuous chain defined by taking a basic Hilbert curve. This fractal is broken into cubic regions of straight and turned chromatin sections DNA placement. This chain is included in an ellipsoid with semi-dimensions 7.1 μm x 2.5 μm x 7.1 μm, which imitates a cell nucleus. Only cubes that are completely included in the ellipsoid are considered as parts of the chain, which length is 6.4 Gbp. Bp density of the produced cell corresponds to ~0.015 bp/nm3. # Geometry: size of World volume /world/worldSize 50 um # Geometry: shape of the cell /cell/radiusSize 14 2.5 14 um # Chemistry: end time of chemistry stage /scheduler/endTime 5.0 ns # Chemistry: set maximum allowed zero time steps /scheduler/maxNullTimeSteps 10000000 # Geometry: distance from base pairs at which radicals are killed /dnageom/radicalKillDistance 9 nm # Geometry: deposited energy accumulation range limit to start recording SBs from direct effects /dnageom/interactionDirectRange 2.0 angstrom # Geometry: creation # - Side length for each placement /dnageom/placementSize 75 75 75 nm # - Scaling of XYZ in fractal definition file /dnageom/fractalScaling 75 75 75 nm # - Path to file that defines placement locations /dnageom/definitionFile geometries/cube-centred-X-8.txt # - Set placement volumes /dnageom/placementVolume turn geometries/turned_solenoid_750_withHistone.txt /dnageom/placementVolume turntwist geometries/turned_twisted_solenoid_750_withHistone.txt true /dnageom/placementVolume straight geometries/straight_solenoid_750_withHistone.txt . The DNA geometrical model and the irradiation setup in the simulation are as follows: . Left: The 3D geometry of the cell nucleus (14.2 μm x 14.2 μm x 5 μm) used in the human_cell.mac macro file, showing the continuous fractal interior. Right: The beam geometry used in the simulation, showing the incident protons as a parallel beam. The chromosome as region of interest for damage analysis is defined using: . /chromosome/add cell ellipse 7100 2500 7100 0 0 0 nm 0 0 0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#geometry",
+    "relUrl": "/docs/examples/human-cell#geometry"
+  },"60": {
+    "doc": "Human cell",
+    "title": "Particle source",
+    "content": "A proton source plane with circle radius 7.1 um is located 3 μm from the cell center. # Source geometry /gps/pos/type Plane /gps/pos/shape Circle /gps/pos/centre 0 3000 0 nm /gps/pos/rot1 0 0 1 /gps/pos/rot2 1 0 0 /gps/pos/radius 7100 nm /gps/direction 0 -1 0 # Source particle /gps/particle proton # Source energy /gps/energy 0.4 MeV # Beam on /run/beamOn 215 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#particle-source",
+    "relUrl": "/docs/examples/human-cell#particle-source"
+  },"61": {
+    "doc": "Human cell",
+    "title": "Damage model",
+    "content": "Direct damage model sets 5 eV for the lower break threshold and 37.5 eV for the upper break threshold. A probability of 40.5% is set for the production of strand break. /dnadamage/directDamageLower 5 eV /dnadamage/directDamageUpper 37.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.405 /dnadamage/inductionOHChance 0.0 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.0 /dnadamage/inductionHChance 0.0 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.0 /dnadamage/inductionEaqChance 0.0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#damage-model",
+    "relUrl": "/docs/examples/human-cell#damage-model"
+  },"62": {
+    "doc": "Human cell",
+    "title": "Results",
+    "content": "Output (see analysis) is analysed by using the human_cell.C ROOT macro file. | Species Hits (/Gy/Mbp) is defined by radical + DNA reactions, for example: EaqStrandHits is e_aq + DNA backbone . | Damage yield (/Gy/Gbp) is defined by DNA damage complexity (see classification model) . | Breaks yield (/Gy/Gbp) is showed for each break type (direct SSB, indirect SSB, DSB,…). | . Fragments distribution of DNA. A fragment is defined by a distance between two DSBs. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#results",
+    "relUrl": "/docs/examples/human-cell#results"
+  },"63": {
+    "doc": "Human cell",
+    "title": "List of Geant4 macros",
+    "content": "The example provides four macros to simulate the cellular irradiation of three different cell types, see Phys. Med. 112 (2023) 102613 (link) and Phys. Med. 127 (2024) 104389 (link) : . | human_cell.mac : this is the default geometry of a simplified human fibroblast, as described above (ellipsoid with semi-dimensions 7.1 μm x 2.5 μm x 7.1 μm) . | human_cell_HTB177.mac : this is a simplified model of a human large cell lung carcinoma, represented by an ellipsoid with semi-dimensions 8.55 μm x 2.5 μm x 6.425 μm . | human_cell_MCF7.mac : this is a simplified model of a human breast adenocarcinoma, represented by an ellipsoid with semi-dimensions 7.005 μm × 2.50 μm × 5.30 μm . | human_cell_chromosomes.mac : this is a simplified model of a human human fibroblast containing individual chromosomes, represented by an ellipsoid with semi-dimensions 10.575 μm × 3.45 μm × 10.575 μm . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#list-of-geant4-macros",
+    "relUrl": "/docs/examples/human-cell#list-of-geant4-macros"
+  },"64": {
+    "doc": "Human cell",
+    "title": "List of ROOT macros",
+    "content": "Three ROOT macros are provided to analyze the simulation results obtained with the above Geant4 macros : human_cell.C, human_cell_alphas.C and human_cell_chromosomes.C. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell#list-of-root-macros",
+    "relUrl": "/docs/examples/human-cell#list-of-root-macros"
+  },"65": {
+    "doc": "Human cell",
+    "title": "Human cell",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/human-cell",
+    "relUrl": "/docs/examples/human-cell"
+  },"66": {
+    "doc": "Home",
+    "title": "molecularDNA",
+    "content": "Radiation-induced DNA damage simulations in Geant4 . molecularDNA is a Geant4-DNA example built to allow easy simulation of radiation-induced DNA damage with flexible geometries and well defined damage parameters. Get started right away in the Geant4 geant4/examples/advanced/dna/moleculardna directory with a library of pre-existing geometries, or dive into the documentation. A tutorial demonstrating molecularDNA is also available at this link. Important : This example is for demonstration purposes and is intended as an introductory tool for users to create their applications. Therefore, users are advised to adapt and optimize the simulation parameters in their applications accordingly. human cell example . Get started from example See publications Available geometries . Want to know more about how it all works? You’ll want to visit our Overview page. – Updated on Dec. 10, 2025 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/#moleculardna",
+    "relUrl": "/#moleculardna"
+  },"67": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/",
+    "relUrl": "/"
+  },"68": {
+    "doc": "molecularDNA macro files",
+    "title": "molecularDNA macro files",
+    "content": "Macro files define simulations in Geant4. The molecularDNA example contains a number of additional commands that allow DNA damage simulations to take place. The full list of commands is written in configuration. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy",
+    "relUrl": "/docs/overview/macro-anatomy"
+  },"69": {
+    "doc": "molecularDNA macro files",
+    "title": "Table of contents",
+    "content": ". | A basic macro file | Set up the world | Set up the DNA geometry | Define the chromosomes | Set up the damage model | Set up the beam | Set up analysis rules | Run the simulation | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#table-of-contents",
+    "relUrl": "/docs/overview/macro-anatomy#table-of-contents"
+  },"70": {
+    "doc": "molecularDNA macro files",
+    "title": "A basic macro file",
+    "content": "Let’s start with a basic macro file: . # First off, we set the size of the world /world/worldSize 3 um # Next we define the geometry /dnageom/placementSize 50 50 50 nm /dnageom/placementVolume turn geometries/1strand_50nm_turn.txt /dnageom/placementVolume turntwist geometries/1strand_50nm_turn.txt true /dnageom/placementVolume straight geometries/1strand_50nm_straight.txt /dnageom/fractalScaling 50 50 50 nm /dnageom/definitionFile geometries/hilbert1.txt # We define our \"chromosomes\" /chromosome/add cell sphere 200 0 0 0 nm # Geometry related damage parameters /dnageom/radicalKillDistance 4 nm /dnageom/interactionDirectRange 6 angstrom # We define the damage model /dnadamage/directDamageLower 17.5 eV /dnadamage/directDamageUpper 17.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.4 /dnadamage/inductionOHChance 0.00 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.4 /dnadamage/inductionHChance 0.00 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.4 /dnadamage/inductionEaqChance 0.00 # And then we initialize our run /run/initialize # The General Particle Source is used to define a beam /gps/particle proton /gps/ang/type iso /gps/energy 100 keV /gps/pos/type Point /gps/pos/centre 51 51 51 nm # Set any analysis parameters /analysisDNA/fileName my_file.root # And the simulation can run! /run/beamOn 1 . That’s a lot to digest. But we can break down the macro file into a few components: . | Set up the world | Define the geometry | Define the regions of interest (chromosomes) | Define the damage model | Set up the beam | Set any analysis rules | Run the simulation | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#a-basic-macro-file",
+    "relUrl": "/docs/overview/macro-anatomy#a-basic-macro-file"
+  },"71": {
+    "doc": "molecularDNA macro files",
+    "title": "Set up the world",
+    "content": "The first command to run is to set the size of the world. The simulation runs in a square world and you can set the side length as below: . /world/worldSize 3 um . The world is entirely made of liquid water unless you also specify a cell (by its semi-major axes). /cell/radiusSize 1 1 0.5 um . Cells modify the default behaviour by placing a water containing cell into a vacuum-filled world. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#set-up-the-world",
+    "relUrl": "/docs/overview/macro-anatomy#set-up-the-world"
+  },"72": {
+    "doc": "molecularDNA macro files",
+    "title": "Set up the DNA geometry",
+    "content": "There are two important notions when we define the geometry, placement definition and the geometry definition, often called the fractal definition as it is often seeded with a fractal. | Placement definition defines the small scale structure of the simulation. | Geometry definition defines the large scale structure of the simulation. | . This is illustrated below, where turned and straight segments are used to build a horse-shoe shape: . So how does all this work? Let’s break down the definitions above: . The first things we define are the sizes of our placement volumes. Here we use 50 nm side length cubes, but these can be rectangular prisms of any shape. /dnageom/placementSize 50 50 50 nm . In this example there are three placement definitions for a straight section, a turned section, and a turned with a 90˚ twist section. /dnageom/placementVolume turn geometries/1strand_50nm_turn.txt /dnageom/placementVolume turntwist geometries/1strand_50nm_turn.txt true /dnageom/placementVolume straight geometries/1strand_50nm_straight.txt . These are referenced by the their names turn, straight and turntwist in the geometry definition file which is loaded as follows: . /dnageom/definitionFile geometries/hilbert1.txt . This particular file handles the space in integer units, so that we can scale them using the command, which allows the definition file to be scaled to the size of the placement volumes we use in this example. /dnageom/fractalScaling 50 50 50 nm . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#set-up-the-dna-geometry",
+    "relUrl": "/docs/overview/macro-anatomy#set-up-the-dna-geometry"
+  },"73": {
+    "doc": "molecularDNA macro files",
+    "title": "Define the chromosomes",
+    "content": "In the molecularDNA example, you can think of chromosomes as regions of interest for analysis. Currently, cylindrical, spherical and elliptical chromosome shapes can be defined, which are mapped onto the placement volumes defined by the large scale geometry. The below image shows, for example how two chromosomes can be defined to yield two regions of interest, overlaid on the grid which defines the overall geometry. Where chromosome regions overlap, energy depositions will be recorded in both. Importantly, the DNA geometry is only placed inside chromosomes. Using this, a square geometry can be coerced to a circular form, by placing a spherical chromosome as we do here: . /chromosome/add cell sphere 200 0 0 0 nm . The chromosome name is cell, its shape is sphere. The radius 200. The position : 0 0 0. The unit: nm nanometer. The arguments for a cylinder are: . | name cyl radius height x y z unit | name cyl radius height x y z unit rx ry rz (rotations) | . The arguments for a ellipse are: . | name ellipse sx sy sz x y z unit | name ellipse sx sy sz x y z unit rx ry rz Note that dimensions (sx, sy, sz) are semi-major axes and rotations are in degrees. | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#define-the-chromosomes",
+    "relUrl": "/docs/overview/macro-anatomy#define-the-chromosomes"
+  },"74": {
+    "doc": "molecularDNA macro files",
+    "title": "Set up the damage model",
+    "content": "A number of parameters are used to determine how DNA damage works in the simulation. The first of these determine how the geometry in particular influences the simulation. /dnageom/radicalKillDistance 4 nm /dnageom/interactionDirectRange 6 angstrom . The radical kill distance tells the simulation to kill all chemistry tracks further than 4 nm from the DNA. This parameter is an implicit bound on scavenging. It basically assumes all chemical radicals that need to diffuse 4 nm to react with the DNA will be scavenged before they are able to interact chemically with the DNA molecule. The direct interaction range describes to what radius direct (physics-driven) energy depositions should be ascribed to a DNA molecule. Here, only energy depositions with 6 Å can contribute a direct strand break. The next part of the damage model handles how direct strand breaks are calculated. The below snippet defines a step function where a cumulative deposition of 17.5 eV or more in one event will cause a break. /dnadamage/directDamageLower 17.5 eV /dnadamage/directDamageUpper 17.5 eV . The lower and upper values here describe a broken linear function where: . | Energy deposition below directDamageLower never causes a break | Energy deposition above directDamageUpper always causes a break | Between these bounds, the likelihood of a break rises uniformly | . An example of this, for a lower bound of 5 eV and an upper bound of 37.5 eV is shown below . Next, we define the likelihood of chemical damage occurring for different reactions as below: . /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.4 /dnadamage/inductionOHChance 0.0 . Indirect damage here is what is typically discussed in most papers, it is the likelihood of a chemical reaction occurring between either •OH (in this case) and either a base or strand molecule. A lot of research only considers reactions between radicals and strands as leading to strand breaks, and this simulation considers that all reactions between a strand and a radical cause a break. On the other hand, it’s rarely considered that an interaction between a radical and a base can lead to a strand break. If, for whatever reason, you want to model this, you can use the induction chance. This is the probability that base damage leads to a strand break. For most simulations, all that is important are the radical + strand break chances, which are set by: . /dnadamage/indirectOHStrandChance 0.4 /dnadamage/indirectHStrandChance 0.4 /dnadamage/indirectEaqStrandChance 0.4 . for the •OH, H+ and eaq radicals respectively. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#set-up-the-damage-model",
+    "relUrl": "/docs/overview/macro-anatomy#set-up-the-damage-model"
+  },"75": {
+    "doc": "molecularDNA macro files",
+    "title": "Set up the beam",
+    "content": "The simulation allows the Geant4 General Particle Source be used to define the beam. You can read the documentation here. The source here defines a 100 keV proton point source emitting isotropically. # The General Particle Source is used to define a beam /gps/particle proton /gps/ang/type iso /gps/energy 100 keV /gps/pos/type Point /gps/pos/centre 51 51 51 nm . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#set-up-the-beam",
+    "relUrl": "/docs/overview/macro-anatomy#set-up-the-beam"
+  },"76": {
+    "doc": "molecularDNA macro files",
+    "title": "Set up analysis rules",
+    "content": "The commands under analysisDNA allow the analysis to be modified. Notably, you’ll want to set the output file name: . /analysisDNA/fileName my_file.root . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#set-up-analysis-rules",
+    "relUrl": "/docs/overview/macro-anatomy#set-up-analysis-rules"
+  },"77": {
+    "doc": "molecularDNA macro files",
+    "title": "Run the simulation",
+    "content": "Particles can be fired using the /run/beamOn command. If you haven’t already run /run/initialize, the initialisation process will also occur here. Be advised that this can take many hours to build a complex DNA geometry due to how the simulation has been designed and the current constraints of Geant4 as it optimises navigation. It is advised that a test on a small geometry is run before moving to a human cell-sized geometry. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/macro-anatomy#run-the-simulation",
+    "relUrl": "/docs/overview/macro-anatomy#run-the-simulation"
+  },"78": {
+    "doc": "Overview",
+    "title": "molecularDNA Overview",
+    "content": "The molecularDNA example is designed to allow anyone to simulate early DNA damage using only Geant4 macro commands - No C++ skills needed. The program takes inputs through the form of macro commands which define the geometry, damage model, physics, chemistry and run conditions for the simulation until principal DSB repair pathways. If you are entirely new to this, the best place to start is looking at the molecularDNA macro files. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview#moleculardna-overview",
+    "relUrl": "/docs/overview#moleculardna-overview"
+  },"79": {
+    "doc": "Overview",
+    "title": "Overview",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview",
+    "relUrl": "/docs/overview"
+  },"80": {
+    "doc": "Parameter study",
+    "title": "Parameter study (cylinders.mac)",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#parameter-study-cylindersmac",
+    "relUrl": "/docs/examples/parameter-study#parameter-study-cylindersmac"
+  },"81": {
+    "doc": "Parameter study",
+    "title": "Table of contents",
+    "content": ". | Parameter study (cylinders.mac) . | Overview | Geometry | Particle source | Damage model | Results | Visualization | References | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#table-of-contents",
+    "relUrl": "/docs/examples/parameter-study#table-of-contents"
+  },"82": {
+    "doc": "Parameter study",
+    "title": "Overview",
+    "content": "The simulation geometry is based upon a past parameter study [1] of direct and indirect DNA damage yields in straight DNA fibres to study the impacts of the different parameters. The cylinders.mac macro file can be used for such simulation. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#overview",
+    "relUrl": "/docs/examples/parameter-study#overview"
+  },"83": {
+    "doc": "Parameter study",
+    "title": "Geometry",
+    "content": "The geometry for parameter sweeps consists of a 3 μm sphere filled with 200.000 individual 216 bp long straight DNA segments in a 100 nm × 30 nm × 30 nm placement volume. Radical kill distance Damage model is set to 9 nm and the range for direct interaction is set to 6 A. # Geometry: size of World volume /world/worldSize 10200 nm # Geometry: size of cell volume /cell/radiusSize 3 3 3 um # Chemistry: end time of chemistry stage /scheduler/endTime 1 us # Geometry: optimisation of voxelisation /dnageom/setSmartVoxels 1 # Geometry: check overlaps in DNA geometry region /dnageom/checkOverlaps false # Geometry: distance from base pairs at which radicals are killed /dnageom/radicalKillDistance 9 nm # Geometry: deposited energy accumulation range limit to start recording SBs from direct effects /dnageom/interactionDirectRange 6 angstrom # Geometry: creation # - Side length for each placement /dnageom/placementSize 30 30 100 nm # - Scaling of XYZ in fractal definition file /dnageom/fractalScaling 1 1 1 nm # - Path to file that defines placement locations /dnageom/definitionFile geometries/prisms200k_r3000.txt # - Set a placement volume /dnageom/placementVolume prism geometries/straight-216-0.txt # Geometry: take the angles in the voxel placement file as multiples of pi /dnageom/setVoxelPlacementAnglesAsMultiplesOfPi false # Geometry: enable custom molecule sizes /dnageom/useCustomMoleculeSizes false . A spherical chromosome named “cylinder” is defined for analysis using: . /chromosome/add cylinder sphere 3000 0 0 0 nm . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#geometry",
+    "relUrl": "/docs/examples/parameter-study#geometry"
+  },"84": {
+    "doc": "Parameter study",
+    "title": "Particle source",
+    "content": "Primary electrons are generated randomly, with a random direction in a smaller 500 nm sphere in the centre of the test region. The primary particles with energies no greater than 4.5 keV cannot escape the larger spherical region, and all primaries see an equivalently random region. # Source geometry /gps/pos/type Volume /gps/pos/shape Sphere /gps/pos/radius 500 nm /gps/pos/centre 0 0 0 nm # Source particle, energy and angular distribution /gps/particle e- /gps/energy 4.5 keV /gps/ang/type iso # Beam on /run/beamOn 100000 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#particle-source",
+    "relUrl": "/docs/examples/parameter-study#particle-source"
+  },"85": {
+    "doc": "Parameter study",
+    "title": "Damage model",
+    "content": "Direct damage model uses the 17.5 eV for lower and upper break thresholds. /dnadamage/directDamageLower 17.5 eV /dnadamage/directDamageUpper 17.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.65 /dnadamage/inductionOHChance 0.0 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.65 /dnadamage/inductionHChance 0.0 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.65 /dnadamage/inductionEaqChance 0.0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#damage-model",
+    "relUrl": "/docs/examples/parameter-study#damage-model"
+  },"86": {
+    "doc": "Parameter study",
+    "title": "Results",
+    "content": "Output (see analysis) is analysed by using the cylinders.C ROOT macro file. Refer classification model for detail of source and complexity frequency. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#results",
+    "relUrl": "/docs/examples/parameter-study#results"
+  },"87": {
+    "doc": "Parameter study",
+    "title": "Visualization",
+    "content": "For visualization, we recommend to use the simple DNA fiber geometry provided in fiber.mac. More specifically, start moleculardna using the command: ./molecular –t 1 –v 1 . to open the Qt visualiser. Then use the mac file that you want, e.g. /control/execute fiber.mac . You can then use the graphical interface Reset Camera button to get visualization. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#visualization",
+    "relUrl": "/docs/examples/parameter-study#visualization"
+  },"88": {
+    "doc": "Parameter study",
+    "title": "References",
+    "content": "[1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study#references",
+    "relUrl": "/docs/examples/parameter-study#references"
+  },"89": {
+    "doc": "Parameter study",
+    "title": "Parameter study",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/parameter-study",
+    "relUrl": "/docs/examples/parameter-study"
+  },"90": {
+    "doc": "Phage",
+    "title": "Phage (phage.mac)",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#phage-phagemac",
+    "relUrl": "/docs/examples/phage#phage-phagemac"
+  },"91": {
+    "doc": "Phage",
+    "title": "Table of contents",
+    "content": ". | Phage (phage.mac) . | Overview | Geometry | Particle source | Damage model | Results | Reference | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#table-of-contents",
+    "relUrl": "/docs/examples/phage#table-of-contents"
+  },"92": {
+    "doc": "Phage",
+    "title": "Overview",
+    "content": "The example simulates the irradiation of a DNA phage containing 141158 bp, placed in a cylinder with radius 3.5 um and height 7 um. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#overview",
+    "relUrl": "/docs/examples/phage#overview"
+  },"93": {
+    "doc": "Phage",
+    "title": "Geometry",
+    "content": "Phage geometry is implemented in the provided macro file phage.mac. The file phage.txt describes the atom positions in the geometry. Radical kill distance and direct interaction range are set to 4 nm and 4 angstrom, respectively. # Geometry: size of World volume /world/worldSize 9 um # Geometry: creation # - Side length for each placement /dnageom/placementSize 50 50 50 nm # - Scaling of XYZ in fractal definition file /dnageom/fractalScaling 50 50 50 nm # - Path to file that defines placement locations /dnageom/definitionFile geometries/phage.txt # - Set placement volumes /dnageom/placementVolume turn geometries/1strand_50nm_turn.txt /dnageom/placementVolume turntwist geometries/1strand_50nm_turn.txt true /dnageom/placementVolume straight geometries/1strand_50nm_straight.txt # Geometry: distance from base pairs at which radicals are killed /dnageom/radicalKillDistance 4 nm # Geometry: deposited energy accumulation range limit to start recording SBs from direct effects /dnageom/interactionDirectRange 4.0 angstrom . The chromosome as region of interest for damage analysis is defined using: . /chromosome/add phage cyl 3500 7000 0 0 0 nm 0 0 0 . Example of phage geometry visualization. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#geometry",
+    "relUrl": "/docs/examples/phage#geometry"
+  },"94": {
+    "doc": "Phage",
+    "title": "Particle source",
+    "content": "A proton plane circular source is used, shooting a parallel beam. # Source geometry /gps/pos/type Plane /gps/pos/shape Circle /gps/pos/centre 0 7000 0 nm /gps/pos/rot1 0 0 1 /gps/pos/rot2 1 0 0 /gps/pos/radius 3500 nm # Source particle, energy and angular distribution /gps/particle proton /gps/energy 2.5 MeV /gps/direction 0 -1 0 # Beam on /run/beamOn 10000 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#particle-source",
+    "relUrl": "/docs/examples/phage#particle-source"
+  },"95": {
+    "doc": "Phage",
+    "title": "Damage model",
+    "content": "The following settings are used: . /dnadamage/directDamageLower 5 eV /dnadamage/directDamageUpper 37.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.405 /dnadamage/inductionOHChance 0.00 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.0 /dnadamage/inductionHChance 0.00 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.0 /dnadamage/inductionEaqChance 0.00 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#damage-model",
+    "relUrl": "/docs/examples/phage#damage-model"
+  },"96": {
+    "doc": "Phage",
+    "title": "Results",
+    "content": "Output (see analysis) is analysed by using the phage.C ROOT macro file. Example of damage simulation. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#results",
+    "relUrl": "/docs/examples/phage#results"
+  },"97": {
+    "doc": "Phage",
+    "title": "Reference",
+    "content": "This geometry was developed during the ESA/BioRadIII project. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage#reference",
+    "relUrl": "/docs/examples/phage#reference"
+  },"98": {
+    "doc": "Phage",
+    "title": "Phage",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/phage",
+    "relUrl": "/docs/examples/phage"
+  },"99": {
+    "doc": "Physics model",
+    "title": "Physics model",
+    "content": "Geant4-DNA Monte-Carlo track-structure code describes spatial distribution of energy depositions, interaction types in material of biological interest (water, DNA,…) based on interaction probabilities (cross sections). Geant4-DNA physics processes and models have been built in physics constructors which are designed to activate required physical models in a single command line. Example of movie by V. Stepan : 20 keV electron and 20 MeV alpha tracks in 10 micrometer cube of liquid water, generated using Geant4 10.0p2 microdosimetry example. G4EmDNAPhysics_option2, G4EmDNAPhysics_option4 or G4EmDNAPhysics_option6 constructors are recommended to use in the molecularDNA example. Please refer to Geant4-DNA for details. Important note: The DNA geometry is defined as being composed of DNA materials, for which the current public version of “molecularDNA” does not include cross sections. Physical interactions are simulated within the DNA volumes assuming they contain liquid water only. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/physics-model.html",
+    "relUrl": "/docs/overview/physics-model.html"
+  },"100": {
+    "doc": "Physics model",
+    "title": "References",
+    "content": "[1] Geant4-DNA example applications for track structure simulations in liquid water: a report from the Geant4-DNA Project, S. Incerti et al., Med. Phys. 45 (2018) e722-e739 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/physics-model.html#references",
+    "relUrl": "/docs/overview/physics-model.html#references"
+  },"101": {
+    "doc": "Plasmid",
+    "title": "Plasmid (plasmid.mac)",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#plasmid-plasmidmac",
+    "relUrl": "/docs/examples/plasmid#plasmid-plasmidmac"
+  },"102": {
+    "doc": "Plasmid",
+    "title": "Table of contents",
+    "content": ". | Plasmid (plasmid.mac) . | Overview | Geometry | Particle source | Damage model | Results | Reference | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#table-of-contents",
+    "relUrl": "/docs/examples/plasmid#table-of-contents"
+  },"103": {
+    "doc": "Plasmid",
+    "title": "Overview",
+    "content": "The example simulates the irradiation of a cube of liquid water (side 4.84 um) containing around 10000 plasmids (pBR322, 4367 base pairs each) in a supercoiled conformation and randomly oriented. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#overview",
+    "relUrl": "/docs/examples/plasmid#overview"
+  },"104": {
+    "doc": "Plasmid",
+    "title": "Geometry",
+    "content": "Plasmid geometry is implemented in the provided macro file plasmid.mac. The file plasmid_4367.txt describes the atom positions in a single plasmid, and the file prisms_plasmids_positions_500ngpul.txt contains all plasmid positions in the irradiated volume. Radical kill distance and direct interaction range are set to 9 nm and 5.5 angstrom, respectively. # Geometry: size of World volume /world/worldSize 4.84 um # Geometry: creation # - Side length for each placement /dnageom/placementSize 200 200 200 nm # - Scaling of XYZ in fractal definition file /dnageom/fractalScaling 1 1 1 nm # - Path to file that defines placement locations /dnageom/definitionFile geometries/prisms_plasmids_positions_500ngpul.txt # - Set placement volumes /dnageom/placementVolume prism geometries/plasmid_4367.txt # Geometry: distance from base pairs at which radicals are killed /dnageom/radicalKillDistance 9 nm # Geometry: deposited energy accumulation range limit to start recording SBs from direct effects /dnageom/interactionDirectRange 5.5 angstrom . The chromosome as region of interest for damage analysis is defined using: . /chromosome/add plasmid box 2.21 2.21 2.42 0 0 0 um . Examples of plasmid geometries, from ref. [1] . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#geometry",
+    "relUrl": "/docs/examples/plasmid#geometry"
+  },"105": {
+    "doc": "Plasmid",
+    "title": "Particle source",
+    "content": "A plane square source of protons is used, shooting a parallel beam. # Source geometry /gps/pos/type Plane /gps/pos/shape Square /gps/pos/centre 0 0 -2.42 um /gps/pos/halfx 2.21 um /gps/pos/halfy 2.21 um # Source particle, energy and angular distribution /gps/particle proton /gps/energy 3 MeV /gps/direction 0 0 1 # Beam on /run/beamOn 1000 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#particle-source",
+    "relUrl": "/docs/examples/plasmid#particle-source"
+  },"106": {
+    "doc": "Plasmid",
+    "title": "Damage model",
+    "content": "Direct damage model sets 17.5 eV for the energy threshold. A probability of 65% is set for the indirect induction of strand break. /dnadamage/directDamageLower 17.5 eV /dnadamage/directDamageUpper 17.5 eV /dnadamage/indirectOHBaseChance 1.0 /dnadamage/indirectOHStrandChance 0.65 /dnadamage/inductionOHChance 0.0 /dnadamage/indirectHBaseChance 1.0 /dnadamage/indirectHStrandChance 0.65 /dnadamage/inductionHChance 0.0 /dnadamage/indirectEaqBaseChance 1.0 /dnadamage/indirectEaqStrandChance 0.65 /dnadamage/inductionEaqChance 0.0 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#damage-model",
+    "relUrl": "/docs/examples/plasmid#damage-model"
+  },"107": {
+    "doc": "Plasmid",
+    "title": "Results",
+    "content": "Output (see analysis) is analysed by using the plasmid.C ROOT macro file. It calculates damage statistics and plots the five following quantities: . | distribution of damage per plasmid | number of direct SSB per event | number of direct DSB per event | percentage of number of damages per plasmids | percentage of number of damages per event | . Example of damage distribution in the plasmid population. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#results",
+    "relUrl": "/docs/examples/plasmid#results"
+  },"108": {
+    "doc": "Plasmid",
+    "title": "Reference",
+    "content": "[1] Quantitative analysis of dose dependent DNA fragmentation in dry pBR322 plasmid using long read sequencing and Monte Carlo simulations, P. Beaudier et al., Sc. Rep. 14 (2024) 18650 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid#reference",
+    "relUrl": "/docs/examples/plasmid#reference"
+  },"109": {
+    "doc": "Plasmid",
+    "title": "Plasmid",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/examples/plasmid",
+    "relUrl": "/docs/examples/plasmid"
+  },"110": {
+    "doc": "Publications",
+    "title": "Publications",
+    "content": "This version of molecularDNA is based on the following previous works and is currently being further developed. | In silico assessment of cellular damage from Lu-177, Ac-225, and Pb-212 therapeutic radionuclides, K. P. Chatzipapas, K. Papachristou, D. Visvikis, S. Incerti, J. D. Hazle, G. C. Kagadis, Med. Phys. 52 (2025) e70089 - link . | Development of a novel computational technique to create DNA and cell geometrical models for Geant4-DNA, K. Chatzipapas et al., Phys. Med. 127 (2024) 104389 - link . | Quantitative analysis of dose dependent DNA fragmentation in dry pBR322 plasmid using long read sequencing and Monte Carlo simulations, P. Beaudier et al., Sc. Rep. 14 (2024) 18650 - link . | Geant4-DNA simulation of human cancer cells irradiation with helium ion beams, K. Chatzipapas et al., Phys. Med. 112 (2023) 102613 - link . | Prediction of DNA rejoining kinetics and cell survival for V79 cells using Geant4-DNA, D. Sakata et al., Phys. Med. 105 (2023) 102508 - link - corrigendum . | Simulation of DNA damage using Geant4-DNA: an overview of the “molecularDNA” example application, K. Chatzipapas et al., Prec. Radiat. Oncol. 7 (2023) 4–14 - link . | Performance Evaluation for Repair of HSGc-C5 Carcinoma Cell Using Geant4-DNA, D. Sakata et al., Cancers 13 (2021) 6046 - link . | A Geant4-DNA evaluation of radiation-induced DNA damage on a human fibroblast, W.-G. Shin et al., Cancers 13 (2021) 4940 - link . | Full integrated Monte Carlo simulation for evaluating radiation induced DNA damage and following repair using Geant4-DNA, D.Sakata et al., Sc. Rep. 10 (2020) 20788 - link . | Evaluation of early radiation DNA damage in a fractal cell nucleus model using Geant4-DNA, D. Sakata et al., Phys. Med. 62 (2019) 152-157 - link . | Mechanistic DNA Damage Simulations in Geant4-DNA Part 2: Electron and Proton Damage in a Bacterial Cell, N. Lampe et al., Phys. Med. 48 (2018) 146-155 - link - corrigendum . | Mechanistic DNA Damage Simulations in Geant4-DNA Part 1: A parameter study in a simplified geometry, N. Lampe et al., Phys. Med. 48 (2018) 135-145 - link . | . A tutorial demonstrating molecularDNA is also available at this link. Find more on the Geant4-DNA project website. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/publications.html",
+    "relUrl": "/docs/publications.html"
+  },"111": {
+    "doc": "Publications",
+    "title": "Authors (in alphabetical order)",
+    "content": ". | M. Batmunkh | J.M.C. Brown | K. Chatzipapas | P. Dondero | M. Dordevic | S. Incerti | M. Karamitros | N. Lampe | D. Sakata | W.G. Shin | R. Stanzani | H. Tran | S. Zein | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/publications.html#authors-in-alphabetical-order",
+    "relUrl": "/docs/publications.html#authors-in-alphabetical-order"
+  },"112": {
+    "doc": "Repair model",
+    "title": "Repair model",
+    "content": "This model calculates the accumulated proteins yield, by considering four principal DSB repair pathways. These pathways are [1]: . | non-homologous end-joining (NHEJ), | homologous recombination (HR), | single-strand annealing (SSA), and | alternative end-joining mechanism (Alt-NHEJ). | . The number of non-repairable DSB/Gy/cell is needed (NcDSB), as well as the number of DSBs that is more probable to be repaired (NncDSB). More analytically: . Where: . | N0 is the total number of DSB (NncDSB + NcDSB). | VNHEJ, VHR, VSSA and VmicroSSA are mathematical variables that characterize the way that each model affects the way that DSBs are repaired. | D is the dose (Gy). | a(L) is the slope coefficient of linear dose dependence that describes DSB induction per unit of dose (/Gy/cell) and depends on LET. | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/repair-model.html",
+    "relUrl": "/docs/overview/repair-model.html"
+  },"113": {
+    "doc": "Repair model",
+    "title": "User guide",
+    "content": "To run the code, users need to open a terminal in the folder repair_survival_models containing the molecularDNArepair.py script . Then, . python3 molecularDNArepair.py . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/repair-model.html#user-guide",
+    "relUrl": "/docs/overview/repair-model.html#user-guide"
+  },"114": {
+    "doc": "Repair model",
+    "title": "Input parameters",
+    "content": "At line 13, users need to set the name of the output file, which is print in text format. outputFile = \"molecularDNArepair.txt\" . At line 14, users need to set the name of the input file, which for the current version is in ROOT format. A future update of moleculardna example will include the option for using SDD files. iRootFile = \"../molecular-dna.root\" . At line 18, users need to define the dimensions of the cell (x, y, z) in meters. r3 = 7100*1e-09 * 2500*1e-09 * 7100*1e-09 . At line 19, users need to define the length (in bp) of the DNA molecule model included in the simulation. The length of the DNA included in the “human cell” example is 6405886128 bp. NBP = 6405886128 . At line 20, the code calculates the mass of the cell used in the simulation. If another cell shape has been defined, other than the ellipsoid, the user needs to modify this calculation. mass = 997 * 4 * 3.141592 * r3 / 3 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/repair-model.html#input-parameters",
+    "relUrl": "/docs/overview/repair-model.html#input-parameters"
+  },"115": {
+    "doc": "Repair model",
+    "title": "Model parameters",
+    "content": "At lines 106 - 173, the input parameters for the repair model have been included. The default values are those included in Belov et al. [2]. Users can modify these parameters. More extensive description for what each parameter stands for, can be found in the corresponding articles [1-3]. At lines 371 - 377, the values of additional data published in Chatzipapas et al. [3] have been included. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/repair-model.html#model-parameters",
+    "relUrl": "/docs/overview/repair-model.html#model-parameters"
+  },"116": {
+    "doc": "Repair model",
+    "title": "References",
+    "content": "[1] Performance Evaluation for Repair of HSGc-C5 Carcinoma Cell Using Geant4-DNA, D. Sakata et al., Cancers 13 (2021) 6046 - link . [2] A quantitative model of the major pathways for radiation-induced DNA double-strand break repair, O. V. Belov et al., J. Theor. Biol., 366 (2015) 115-130 - link . [3] Simulation of DNA damage using Geant4-DNA: an overview of the “molecularDNA” example application, K. Chatzipapas et al., Prec. Radiat. Oncol. 7 (2023) 4-14 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/repair-model.html#references",
+    "relUrl": "/docs/overview/repair-model.html#references"
+  },"117": {
+    "doc": "Results and analysis",
+    "title": "Results and analysis",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#results-and-analysis",
+    "relUrl": "/docs/overview/results-and-analysis#results-and-analysis"
+  },"118": {
+    "doc": "Results and analysis",
+    "title": "Table of contents",
+    "content": ". | Implementation overview . | Histograms | Tuples | . | ROOT Analysis files | Note about python import in ROOT | Text analysis files | References | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#table-of-contents",
+    "relUrl": "/docs/overview/results-and-analysis#table-of-contents"
+  },"119": {
+    "doc": "Results and analysis",
+    "title": "Implementation overview",
+    "content": "As the simulation runs, it keeps track of three main elements in relation to DNA damage. | Energy depositions in each chromosome | Energy depositions and track length in the cell | DNA damage in the DNA geometry | . At the end of each event, the DNA damage events are collected and analysed, reconstructing the damage pattern in the DNA and assigning it a complexity. In the damage model, a probability is assigned that certain events cause strand breaks (i.e. \\(Pr(\\ce{e^{-}_{aq}} + \\mathrm{Sugar} \\rightarrow \\mathrm{SSB})\\)). These conditions are tested at the end of each event when the analysis runs to determine the damage that occurs. At the completion of the run, the following outputs in a ROOT file are saved: . Histograms . | SSB counter (ssb_counts) | Deposit energy in SSBs (ssb_energies_ev) | DNA fragment size | Strand interaction positions | . Tuples . | Primary Source . | Primary | Energy | PosX in um | PosY in um | PosZ in um | Momentum X | Momentum Y | Momentum Ζ | . | Source (Break Source Frequency) . | Primary | Energy | None | SSBd | SSBi | SSBm | DSBd | DSBi | DSBm | DSBh | . | Damage (DNA damage locations) . | Event | Primary | Energy | TypeClassification | SourceClassification | Position_x_um | Position_y_um | Position_z_um | Size_nm | FragmentLength | BaseDamage | StrandDamage | DirectBreaks | IndirectBreaks | EaqBaseHits | EaqStrandHits | OHBaseHits | OHStrandHits | HBaseHits | HStrandHits | EnergyDeposited_eV | InducedBreaks | Chain | Strand | BasePair | Name | . | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#implementation-overview",
+    "relUrl": "/docs/overview/results-and-analysis#implementation-overview"
+  },"120": {
+    "doc": "Results and analysis",
+    "title": "ROOT Analysis files",
+    "content": "An output ROOT data file (molecular-dna.root) is created by the simulation. ROOT6.x should be installed. Several ROOT macro files are provided to analyse the corresponding results: . | cylinders.C : to plot damage from cylinders geometry | phage.C : to plot damage from phage geometry | plasmid.C : to plot damage from plasmid geometry | ecoli.C : to plot damage from E.coli geometry | human_cell.C, human_cell_alphas.C and human_cell_chromosomes.C: to plot damage and fragments distribution from human cell geometries (as in [3] for human_cell_alphas.C, as in [4] for human_cell_chromosomes.C) | . Simply do: . root cylinders.C . These macros calculate mean quantities and the associated standard error of the mean (SEM) [5]. A python macro file is provided to modify ROOT output in SDD [2] file format: . | createSDD.py : to use it, insert the command “python3 createSDD.py”. If error with ROOT, simply source /path/to/root/bin/thisroot.(c)sh, do “pip install pyroot” and try again. | . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#root-analysis-files",
+    "relUrl": "/docs/overview/results-and-analysis#root-analysis-files"
+  },"121": {
+    "doc": "Results and analysis",
+    "title": "Note about python import in ROOT",
+    "content": "If python cannot import ROOT, please configure your ROOT version to include PyROOT. For further instruction refer to the documentation of ROOT, paragraph 19.1.4.2, see link. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#note-about-python-import-in-root",
+    "relUrl": "/docs/overview/results-and-analysis#note-about-python-import-in-root"
+  },"122": {
+    "doc": "Results and analysis",
+    "title": "Text analysis files",
+    "content": "Individual damage files can ge generated to display graphically hits on strands, using the command: . analysisDNA/saveStrands . They use the following naming scheme: . | “D” for a direct damage | “I” for an indirect damage | ”~” if hit without damage | ”-“ if not hit | “X” for both damage types | . The numbers 6 and 7 represent damage source and damage complexity, respectively. ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#text-analysis-files",
+    "relUrl": "/docs/overview/results-and-analysis#text-analysis-files"
+  },"123": {
+    "doc": "Results and analysis",
+    "title": "References",
+    "content": "[1] Computational modelling of lowenergy electron-induced DNA damage by early physical and chemical events, H. Nikjoo et al., Int. J. Radiat. Biol. 71 (1997) 467–483 - link . [2] A new standard DNA damage (SDD) data format, J. Schuemann et al., Rad. Res. 191 (2019) 76-92 - link . [3] Geant4-DNA simulation of human cancer cells irradiation with helium ion beams, K. Chatzipapas et al., Phys. Med. 112 (2023) 102613 - link . [4] Development of a novel computational technique to create DNA and cell geometrical models for Geant4-DNA, K. Chatzipapas et al., Phys. Med. 127 (2024) 104389 - link . [5] What to use to express the variability of data: Standard deviation or standard error of mean?, Mohini P. Barde, Prajakt J. Barde, Perspectives in Clinical Research 3(3) (2012) 113-116 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis#references",
+    "relUrl": "/docs/overview/results-and-analysis#references"
+  },"124": {
+    "doc": "Results and analysis",
+    "title": "Results and analysis",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/results-and-analysis",
+    "relUrl": "/docs/overview/results-and-analysis"
+  },"125": {
+    "doc": "Running the example",
+    "title": "Running the example",
+    "content": "Geant4.11.1 or higher is required (see Geant4). To build the example: . mkdir build cd build cmake ../pathToExamples/moleculardna make . This example needs internet to download the pre-existing geometry data file. Please, check your connection. To run the example: ./molecular -m cylinders.mac -t 2 -p 2 . -m : macro file (see available geometries) . -t : number of threads to run . -p : physics constructor option (2, 4 or 6, see physics model) . -v : set to 1 only to activate visualization (0 is the default value) . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/source.html",
+    "relUrl": "/docs/source.html"
+  },"126": {
+    "doc": "Survival model",
+    "title": "Survival function",
+    "content": "To estimate the surviving fraction (SF) of specific cells, the two-lesion kinetics (TLK) model proposed by Stewart et al. [1] can be used. The TLK model includes kinetic processes of fast- and slow-DNA repair, and, based on lethal DNA damage, it can calculate the SF of a cell population. It must be stated that multiple-lesion repair mechanisms may lead to complex aberrations due to incorrect rejoining. The SF is calculated based on the function: . | L1(t) is the number of lesions per cell in the fast-repair process at a given time t after the beginning of the irradiation procedure. | L2(t) is the number of lesions per cell in the slow-repair process at a given time t. | Lf(t) is the number of lethal lesions that may lead to cell death at time t. | . This model includes: . | Repair probability coefficients, which represent the rate of rejoined lesions (λ and η), and | Lethality probability coefficients, which represent the probability that a residual lesion may lead to cell death (β and γ). More specifically, λ1, λ2, and η correspond to fast-, slow-, and binary-rejoining processes, respectively (expressed in /hour). Similarly, β1, β2, and γ correspond accordingly to each rejoining process. | . The two-lesion kinetics (TLK) [1] model includes kinetic processes of fast- and slow-DNA repair, and, based on lethal DNA damage, it can calculate the SF of a cell population . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html#survival-function",
+    "relUrl": "/docs/overview/survival-model.html#survival-function"
+  },"127": {
+    "doc": "Survival model",
+    "title": "User guide",
+    "content": "To run the code, users need to open a terminal in the folder repair_survival_models containing the molecularDNAsurvival.py script. Then, . python3 molecularDNAsurvival.py . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html#user-guide",
+    "relUrl": "/docs/overview/survival-model.html#user-guide"
+  },"128": {
+    "doc": "Survival model",
+    "title": "Input parameters",
+    "content": "At line 13, users need to set the name of the output file, which is print in text format. outputFile = \"molecularDNAsurvival.txt\" . At line 14, users need to set the name of the input file, which for the current version is in root format. A future update of moleculardna will include the option for using SDD files. iRootFile = \"../molecular-dna.root\" . At line 18, users need to define the dimensions of the cell (x, y, z) in meters. r3 = 7100*1e-09 * 2500*1e-09 * 7100*1e-09 . At line 19, users need to define the length (in bp) of the DNA molecule model included in the simulation. The length of the DNA included in the “human cell” example is 6405886128 bp. NBP = 6405886128 . At line 20, the code calculates the mass of the cell used in the simulation. If another cell shape has been defined, other than the ellipsoid, the user needs to modify this calculation. mass = 997 * 4 * 3.141592 * r3 / 3 . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html#input-parameters",
+    "relUrl": "/docs/overview/survival-model.html#input-parameters"
+  },"129": {
+    "doc": "Survival model",
+    "title": "Model parameters",
+    "content": "The TLK model, calculates the survival fraction of cells for specific time points, with the integral values being 1 Gy. Users need to define the maximum dose, for which the calculation will end. maxDose = 9 . This is the dose rate used in the TLK model to calculate survival: . DR1 = 60 #Gy/h SF-dose . This is a constant of the model, as defined by Stewart in the TLK [1]. It defines the length of DNA included in the cell: . NBP_of_cell = 4682000000 . Normalization factor to define the true size of the cell used in the simulation: . bp = NBP_of_cell/NBP . For the definition of the parameter values λ1, λ2, β1, β2, γ, η, the following values correspond to the output implemented in [2]. gamma = 0.189328 Lamb1 = 0.0125959 Lamb2 = 1 Beta1 = 0.0193207 Beta2 = 0 Eta = 7.50595e-06 . Definition of the name of the cells: it is just a name for the output. cell = \"test\" . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html#model-parameters",
+    "relUrl": "/docs/overview/survival-model.html#model-parameters"
+  },"130": {
+    "doc": "Survival model",
+    "title": "References",
+    "content": "[1] Two-lesion kinetic model of double-strand break rejoining and cell killing, R. D. Stewart, Radiat. Res. 156 (2001) 365-378 - link . [2] Simulation of DNA damage using Geant4-DNA: an overview of the “molecularDNA” example application, K. Chatzipapas et al. Prec. Radiat. Oncol. 7 (2023) 4-14 - link . ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html#references",
+    "relUrl": "/docs/overview/survival-model.html#references"
+  },"131": {
+    "doc": "Survival model",
+    "title": "Survival model",
+    "content": " ",
+    "url": "https://geant4-dna.github.io/molecular-docs/docs/overview/survival-model.html",
+    "relUrl": "/docs/overview/survival-model.html"
+  }
+}
