@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Damage model
-nav_order: 5
+nav_order: 4
 parent: Overview
 permalink: /docs/overview/damage-model
 ---
