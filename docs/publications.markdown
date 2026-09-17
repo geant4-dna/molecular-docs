@@ -37,16 +37,18 @@ A **tutorial** demonstrating molecularDNA is also available at this [link]({{ "h
 
 Find more on the [Geant4-DNA project]({{ "http://geant4-dna.in2p3.fr/styled-2/index.html" | relative_url }}){:target="_blank"} website.
 
-# Authors (in alphabetical order)
+# Contributing authors (in alphabetical order)
 
 - M. Batmunkh
 - J.M.C. Brown
 - K. Chatzipapas
+- J. W. Choi
 - P. Dondero
 - M. Dordevic
 - S. Incerti
 - M. Karamitros
 - N. Lampe
+- A. Paillet
 - D. Sakata
 - W.G. Shin
 - R. Stanzani
