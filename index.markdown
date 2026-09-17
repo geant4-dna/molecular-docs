@@ -31,8 +31,8 @@ A **tutorial** demonstrating molecularDNA is also available at this [link]({{ "h
 [human cell example]({{"/docs/examples/human-cell" | relative_url}})
 
 [Get started from example]( {{ "/docs/source" | relative_url }} ){: .btn .btn-purple }
-[See publications]({{ "docs/publications" | relative_url }} ){: .btn .btn-blue }
 [Available geometries]( {{ "docs/examples" | relative_url }} ){: .btn .btn-green }
+[See publications]({{ "docs/publications" | relative_url }} ){: .btn .btn-blue }
 
 Want to know more about how it all works? You'll want to visit our [Overview]( {{ "docs/overview" | relative_url }} ) page.
 
