@@ -21,6 +21,8 @@ They are located in the `phase_space` sub-directory.
 
 ## Reading PSF files in simulations
 
+We provide several User Interface commands for the handling of PSF.
+
 ### Replace the source with PSF particles
 
 ```
