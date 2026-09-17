@@ -10,7 +10,7 @@ This guide explains how to use **Phase Space Files (PSF)** as a particle source 
 
 ## Supported PSF formats
 
-molecularDNA supports PSF files in the following formats: ROOT, text, CSV
+molecularDNA supports PSF files in the following formats: ROOT, text and CSV.
 
 ## Example files and macros
 
