@@ -12,9 +12,9 @@ Note that these features will be available from Geant4 11.5, December 2026.
 
 ## Supported PSF formats
 
-molecularDNA supports PSF files in the following formats: ROOT, text and CSV.
+molecularDNA supports PSF in the following formats: ROOT, text and CSV.
 
-## Example of PSF and molecularDNA macro
+## Examples of PSF and molecularDNA macro
 
 **Three** PSF samples are provided and placed in the `phase_space` sub-directory : 
 - `example.root` and `example.txt`, containing 100 particles each,
@@ -24,7 +24,7 @@ The `ecoli_PSF.mac` macro (derived from the `ecoli.mac` macro) can be used to re
 
 This approach works in MT-mode.
 
-## Reading PSF files in simulations
+## Reading PSF in simulations
 
 We provide several User Interface commands for the handling of PSF.
 
@@ -34,7 +34,7 @@ We provide several User Interface commands for the handling of PSF.
 /psf/pattern PSFName
 ```
 
-- Can be use to replace the simulation source with particles from the specified PSF file (`PSFName`).
+- Can be use to replace the simulation source with particles from the specified PSF (`PSFName`).
 - If **no `/run/beamOn nOfEvents`** is specified, the entire PSF is read automatically.
 - If `/run/beamOn nOfEvents` is issued:
   - The simulation shoots `nOfEvents` particles from the PSF.
@@ -56,7 +56,7 @@ We provide several User Interface commands for the handling of PSF.
 /psf/NTupleName NTupleName
 ```
 
-- Defines the title of the **Root NTuple** in the PSF file.
+- Defines the title of the **Root NTuple** in the PSF.
 - Default: `"PSF"`.
 - The particles in this NTuple will serve as the simulation source.
 
