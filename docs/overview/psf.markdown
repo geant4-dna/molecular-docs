@@ -6,7 +6,9 @@ parent: Overview
 ---
 # How to read Phase Space Files (PSF) in molecularDNA
 
-This guide explains how to use **Phase Space Files (PSF)** as a particle source for simulations with molecularDNA.
+This guide explains how to use **Phase Space Files (PSF)** as a particle source for simulations with molecularDNA. 
+
+Note that these features will be available from Geant4 11.5, December 2026.
 
 ## Supported PSF formats
 
@@ -14,7 +16,9 @@ molecularDNA supports PSF files in the following formats: ROOT, text and CSV.
 
 ## Example of PSF and molecularDNA macro
 
-**Three** PSF are provided and placed in the `phase_space` sub-directory : `example.root` and `example.txt`, containing 100 particles each, and `example.csv`, containing 20 electrons of 45 keV and created by the [GRAS Two-Stage Analysis](https://spitfire.estec.esa.int/trac/GRAS/wiki/GRAS/GRAS-05-02/UserGuideTwoStage) (including specific header).
+**Three** PSF samples are provided and placed in the `phase_space` sub-directory : 
+- `example.root` and `example.txt`, containing 100 particles each,
+- `example.csv`, containing 20 electrons of 45 keV and created by the [GRAS Two-Stage Analysis](https://spitfire.estec.esa.int/trac/GRAS/wiki/GRAS/GRAS-05-02/UserGuideTwoStage) (including specific header).
 
 The `ecoli_PSF.mac` macro (derived from the `ecoli.mac` macro) can be used to read them. 
 
