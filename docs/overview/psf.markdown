@@ -12,12 +12,13 @@ This guide explains how to use **Phase Space Files (PSF)** as a particle source 
 
 molecularDNA supports PSF files in the following formats: ROOT, text and CSV.
 
-## Example files and macros
+## Example of PSF and molecularDNA macro
 
-They are located in the `phase_space` sub-directory.
+**Three** PSF are provided and placed in the `phase_space` sub-directory : `example.root` and `example.txt`, containing 100 particles each, and `example.csv`, containing 20 electrons of 45 keV and created by the [GRAS Two-Stage Analysis](https://spitfire.estec.esa.int/trac/GRAS/wiki/GRAS/GRAS-05-02/UserGuideTwoStage) (including specific header).
 
-- **ROOT and text**: examples of PSF (`example.root` and `example.txt`, containing 100 particles each) and ROOT conversion macros (`txtToRoot.C` and `rootToTxt.C`) are available. The `ecoli_PSF.mac` macro can be used (derived from the `ecoli.mac` macro). This approach works in MT-mode.
-- **CSV**: can be used by GRAS Two-Stage Analysis. Example file (`phase_space.csv`, containing 20 electrons of 45 keV) and macro (`phase_space_test.mac`, derived from the `cylinders.mac` macro) are provided. This approach does not work in MT-mode.
+The `ecoli_PSF.mac` macro (derived from the `ecoli.mac` macro) can be used to read them. 
+
+This approach works in MT-mode.
 
 ## Reading PSF files in simulations
 
