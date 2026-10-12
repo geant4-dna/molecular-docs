@@ -27,7 +27,7 @@ respectively.
 
 ```
 # Geometry: size of World volume
-/world/worldSize 9 um
+/world/worldSize 18 um
 
 # Geometry: creation
 #  - Side length for each placement
