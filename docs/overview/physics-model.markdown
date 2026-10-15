@@ -17,6 +17,8 @@ G4EmDNAPhysics_option2, G4EmDNAPhysics_option4 or G4EmDNAPhysics_option6 constru
 
 Please refer to [Geant4-DNA]({{ "http://geant4-dna.in2p3.fr/styled-3/styled-8/index.html" | relative_url }}){:target="_blank"} for details.
 
+From Geant4 11.5, neutron interactions are also included in the PhysicsList class of the example.
+
 **Important note**: The DNA geometry is defined as being composed of DNA materials, for which the current public version of “molecularDNA” does not include cross sections.
 Physical interactions are simulated within the DNA volumes assuming they contain liquid water only.
 
