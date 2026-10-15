@@ -45,6 +45,7 @@ Find more on the [Geant4-DNA project]({{ "http://geant4-dna.in2p3.fr/styled-2/in
 - J. W. Choi
 - P. Dondero
 - M. Dordevic
+- A. Haga
 - S. Incerti
 - M. Karamitros
 - N. Lampe
