@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80mm"
+   height="40mm"
+   viewBox="0 0 80 40"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   sodipodi:docname="world.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     width="80mm"
+     inkscape:zoom="3.1311659"
+     inkscape:cx="145.47297"
+     inkscape:cy="70.101684"
+     inkscape:window-width="1680"
+     inkscape:window-height="997"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g6695"
+       transform="translate(0,2.3659984)">
+      <rect
+         style="fill:#00ffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.262598;stroke-opacity:1"
+         id="rect31"
+         width="34.737404"
+         height="34.737404"
+         x="2.631299"
+         y="2.4990075" />
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.262598;stroke-opacity:1"
+         id="rect31-8"
+         width="34.737404"
+         height="34.737404"
+         x="42.631298"
+         y="2.631299" />
+      <ellipse
+         style="fill:#00ffff;stroke:#000000;stroke-width:0.352103;stroke-opacity:1"
+         id="path1012"
+         cx="60"
+         cy="20"
+         rx="14.823948"
+         ry="9.8239489" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="19.079849"
+         y="21.172871"
+         id="text2738"><tspan
+           sodipodi:role="line"
+           id="tspan2736"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="19.079849"
+           y="21.172871">Water</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="60.017296"
+         y="21.358633"
+         id="text2738-4"><tspan
+           sodipodi:role="line"
+           id="tspan2736-7"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="60.017296"
+           y="21.358633">Water</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="67.752167"
+         y="34.54636"
+         id="text2738-4-2"><tspan
+           sodipodi:role="line"
+           id="tspan2736-7-6"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="67.752167"
+           y="34.54636">Vacuum</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="12.421492"
+       y="3.8024974"
+       id="text7095"><tspan
+         sodipodi:role="line"
+         id="tspan7093"
+         style="stroke-width:0.264583"
+         x="12.421492"
+         y="3.8024974">Default</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="51.825916"
+       y="3.9524634"
+       id="text7095-4"><tspan
+         sodipodi:role="line"
+         id="tspan7093-5"
+         style="stroke-width:0.264583"
+         x="51.825916"
+         y="3.9524634">With /cell</tspan></text>
+  </g>
+</svg>
