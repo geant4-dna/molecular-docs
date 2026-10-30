@@ -116,7 +116,7 @@ Simply do:
 root cylinders.C
 ```
 
-These macros calculate mean quantities and the associated standard error of the mean (SEM) [5].
+These macros calculate damages and associated relative statistical errors.
 
 A python macro file is provided to modify ROOT output in SDD [2] file format:
 - createSDD.py : to use it, insert the command "python3 createSDD.py".
@@ -156,5 +156,3 @@ The numbers 6 and 7 represent damage source and damage complexity, respectively.
 [3] Geant4-DNA simulation of human cancer cells irradiation with helium ion beams, K. Chatzipapas et al., Phys. Med. 112 (2023) 102613 - [link]({{ "https://doi.org/10.1016/j.ejmp.2023.102613" | relative_url }}){:target="_blank"}
 
 [4] Development of a novel computational technique to create DNA and cell geometrical models for Geant4-DNA, K. Chatzipapas et al., Phys. Med. 127 (2024) 104389 - [link]({{ "https://doi.org/10.1016/j.ejmp.2024.104839" | relative_url }}){:target="_blank"}
-
-[5] What to use to express the variability of data: Standard deviation or standard error of mean?, Mohini P. Barde, Prajakt J. Barde, Perspectives in Clinical Research 3(3) (2012) 113-116 - [link]({{ "https://doi.org/10.4103/2229-3485.100662" | relative_url }}){:target="_blank"}
